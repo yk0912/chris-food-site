@@ -2,6 +2,7 @@
 import Base from '../../../layouts/Base.astro';
 import PageHero from '../../../components/PageHero.astro';
 import BakerySubNav from '../../../components/BakerySubNav.astro';
+import MediaCta from '../../../components/MediaCta.astro';
 import ShopInfo from '../../../components/ShopInfo.astro';
 import { shops, menu, links } from '../../../lib/data';
 
@@ -59,4 +60,5 @@ const cats = menu.categories.filter((c) => c.shops.includes(shop.slug));
       </div>
     </section>
   </div>
+  <MediaCta />
 </Base>

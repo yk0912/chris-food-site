@@ -2,6 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import PageHero from '../../components/PageHero.astro';
 import BakerySubNav from '../../components/BakerySubNav.astro';
+import MediaCta from '../../components/MediaCta.astro';
 import { img, shops, menu, links } from '../../lib/data';
 const picks = menu.categories[0].items.slice(0, 3);
 ---
@@ -62,4 +63,5 @@ const picks = menu.categories[0].items.slice(0, 3);
       </div>
     </section>
   </div>
+  <MediaCta />
 </Base>

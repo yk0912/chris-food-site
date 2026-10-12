@@ -204,6 +204,11 @@ a.card:hover { transform: translateY(-4px); }
 .work-links { display: flex; flex-wrap: wrap; gap: 8px 20px; margin: 0; font-size: .92rem; }
 @media (max-width: 760px) { .work { grid-template-columns: 1fr; } .work-img { min-height: 160px; } }
 
+/* media cta (bakery pages) */
+.media-cta { background: #fff; border-top: 1px solid var(--line); text-align: center; padding: 40px 0; }
+.media-cta h2 { font-family: var(--font-round); font-size: 1.3rem; }
+.media-cta p { color: var(--ink-soft); max-width: 40em; margin-inline: auto; }
+
 /* cta */
 .cta { background: var(--brand-soft); text-align: center; padding: 56px 0; }
 .cta h2 { font-size: 1.6rem; }
