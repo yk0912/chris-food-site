@@ -39,6 +39,32 @@ const p = business.produce;
     </div>
   </section>
 
+  {p.works.length > 0 && (
+    <section class="section" id="works">
+      <div class="wrap">
+        <h2 class="section-title"><small>WORKS</small>プロデュース実績</h2>
+        <div class="grid" style="gap:28px">
+          {p.works.map((w) => (
+            <article class="work">
+              {w.image ? <img class="work-img" src={w.image} alt={w.name} loading="lazy" /> : <div class="work-img work-ph" aria-hidden="true"><span>{w.type}</span></div>}
+              <div class="work-body">
+                <span class="tag">{w.type}</span>
+                <h3>{w.name}</h3>
+                <p class="work-meta">{w.place}　／　{w.opened}</p>
+                <p>{w.summary}</p>
+                {w.scope.length > 0 && (
+                  <p class="work-scope"><strong>担当範囲：</strong>{w.scope.join('、')}</p>
+                )}
+                <ul>{w.features.map((f) => <li>{f}</li>)}</ul>
+                <p class="work-links">{w.links.map((l) => <a href={l.url} target="_blank" rel="noopener noreferrer">{l.label}</a>)}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
   <section class="section alt">
     <div class="wrap narrow">
       <h2 class="section-title"><small>FLOW</small>ご依頼の流れ</h2>

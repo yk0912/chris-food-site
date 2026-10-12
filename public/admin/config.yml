@@ -161,6 +161,24 @@ collections:
             widget: object
             fields:
               - { label: リード文, name: lead, widget: text }
+              - label: プロデュース実績
+                name: works
+                widget: list
+                required: false
+                fields:
+                  - { label: 店名, name: name, widget: string }
+                  - { label: 業態, name: type, widget: string }
+                  - { label: 場所, name: place, widget: string }
+                  - { label: オープン時期, name: opened, widget: string }
+                  - { label: 写真（空欄ならデザインパネル表示）, name: image, widget: image, required: false }
+                  - { label: 紹介文, name: summary, widget: text }
+                  - { label: "担当範囲（例: 商品開発、製造技術指導。空欄なら非表示）", name: scope, widget: list, required: false, field: { label: 項目, name: s, widget: string } }
+                  - { label: 特徴, name: features, widget: list, field: { label: 特徴, name: f, widget: string } }
+                  - label: リンク
+                    name: links
+                    widget: list
+                    required: false
+                    fields: [{ label: 表示名, name: label, widget: string }, { label: URL, name: url, widget: string }]
               - label: 対応業態
                 name: targets
                 widget: list
