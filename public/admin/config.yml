@@ -4,7 +4,7 @@ backend:
   name: github
   repo: yk0912/chris-food-site
   branch: main
-  base_url: https://chris-food-site.pages.dev   # OAuth 用 Cloudflare Pages Functions のあるドメイン（本番ドメイン切替時に chrisbakery.jp へ戻す）
+  base_url: https://chrisbakery.jp         # 既定値。admin/index.html の手動初期化で「開いているドメイン」に上書きされる
   auth_endpoint: api/auth                  # functions/api/auth.js, callback.js
 
 locale: ja
