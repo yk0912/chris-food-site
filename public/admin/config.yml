@@ -2,7 +2,7 @@
 # 公開前に repo を実際の GitHub リポジトリ（例: yuusuke/chris-food-site）に書き換えてください。
 backend:
   name: github
-  repo: OWNER/REPO
+  repo: yk0912/chris-food-site
   branch: main
   base_url: https://chrisbakery.jp        # OAuth 用 Cloudflare Pages Functions のあるドメイン
   auth_endpoint: api/auth                  # functions/api/auth.js, callback.js
