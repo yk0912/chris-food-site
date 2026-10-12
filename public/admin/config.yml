@@ -225,24 +225,44 @@ collections:
         format: json
         fields:
           - { label: "掲載ステータス（preparing=準備中 / applying=申請中 / approved=対象講座）", name: status, widget: select, options: [preparing, applying, approved] }
+          - label: ステータスごとの表示文
+            name: statusLabels
+            widget: object
+            fields:
+              - { label: 準備中（preparing）, name: preparing, widget: string }
+              - { label: 申請中（applying）, name: applying, widget: string }
+              - { label: 対象講座（approved）, name: approved, widget: string }
           - { label: リード文, name: lead, widget: text }
           - { label: 助成金の名称, name: grantName, widget: string }
           - { label: 助成金の説明, name: grantIntro, widget: list, field: { label: 段落, name: p, widget: text } }
           - { label: 注意書き, name: notice, widget: text }
+          - label: 講座シリーズの紹介
+            name: series
+            widget: object
+            fields:
+              - { label: シリーズ名, name: title, widget: string }
+              - { label: 説明文, name: text, widget: text }
+              - label: レベル別の一言
+                name: steps
+                widget: list
+                fields: [{ label: レベル, name: level, widget: string }, { label: 一言, name: text, widget: string }]
           - { label: 対象, name: audience, widget: list, field: { label: 対象, name: a, widget: string } }
           - label: 講座
             name: courses
             widget: list
             fields:
               - { label: 公開する, name: published, widget: boolean, default: false }
+              - { label: レベル（初級・中級・上級など）, name: level, widget: string }
               - { label: 講座名, name: title, widget: string }
+              - { label: 講座の目的, name: purpose, widget: text }
               - { label: 対象者, name: target, widget: string }
               - { label: 到達目標, name: goal, widget: text }
-              - { label: カリキュラム, name: contents, widget: list, field: { label: 内容, name: c, widget: string } }
+              - { label: カリキュラム（回ごと）, name: contents, widget: list, field: { label: 内容, name: c, widget: string } }
               - { label: 時間数, name: hours, widget: string }
               - { label: 受講形態, name: format, widget: string }
-              - { label: 受講料, name: price, widget: string }
-              - { label: 講師, name: instructor, widget: string }
+              - { label: 実施方法（空欄なら非表示）, name: method, widget: text, required: false }
+              - { label: 受講料（空欄なら「調整中」）, name: price, widget: string, required: false }
+              - { label: 講師（空欄なら非表示）, name: instructor, widget: string, required: false }
           - { label: 修了要件, name: completion, widget: list, field: { label: 要件, name: c, widget: string } }
           - label: 申込の流れ
             name: flow

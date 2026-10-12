@@ -26,12 +26,18 @@ const statusLabel = (r.statusLabels as Record<string, string>)[r.status];
 
   <section class="section alt" id="courses">
     <div class="wrap">
-      <h2 class="section-title"><small>COURSES</small>講座一覧</h2>
+      <h2 class="section-title"><small>COURSES</small>{r.series.title}</h2>
+      <p class="center narrow">{r.series.text}</p>
+      <ol class="level-steps">
+        {r.series.steps.map((s) => <li><strong>{s.level}</strong><span>{s.text}</span></li>)}
+      </ol>
       {courses.length === 0 && <p class="center">講座の詳細は準備中です。公開までしばらくお待ちください。<br />講座のご要望は<a href="/contact/?type=reskilling">お問い合わせフォーム</a>よりお寄せください。</p>}
       <div class="grid" style="gap:28px">
         {courses.map((c) => (
-          <article class="plain-card">
+          <article class="plain-card course">
+            <span class="level-tag">{c.level}</span>
             <h3>{c.title}{!c.published && <span class="draft-badge">サンプル（公開されません）</span>}</h3>
+            <p>{c.purpose}</p>
             <div class="info-table-wrap" style="margin-top:12px">
               <table class="info-table"><tbody>
                 <tr><th>対象者</th><td>{c.target}</td></tr>
@@ -39,8 +45,9 @@ const statusLabel = (r.statusLabels as Record<string, string>)[r.status];
                 <tr><th>カリキュラム</th><td><ul style="margin:0;padding-left:1.1em">{c.contents.map((x) => <li>{x}</li>)}</ul></td></tr>
                 <tr><th>時間数</th><td>{c.hours}</td></tr>
                 <tr><th>受講形態</th><td>{c.format}</td></tr>
-                <tr><th>受講料</th><td>{c.price}</td></tr>
-                <tr><th>講師</th><td>{c.instructor}</td></tr>
+                {c.method && <tr><th>実施方法</th><td>{c.method}</td></tr>}
+                <tr><th>受講料</th><td>{c.price || '調整中'}</td></tr>
+                {c.instructor && <tr><th>講師</th><td>{c.instructor}</td></tr>}
               </tbody></table>
             </div>
           </article>
