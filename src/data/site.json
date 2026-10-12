@@ -46,12 +46,12 @@
     "endpoint": "https://formspree.io/f/xaeqdlwb"
   },
   "images": {
-    "systemPhoto": "/uploads/people/kiuchi.jpg",
+    "systemPhoto": "/uploads/system/system-dev.jpg",
     "ogImage": "/uploads/shops/musashino-1.jpg",
     "ceoPhoto": "/uploads/people/kiuchi.jpg",
     "aboutPhoto": "/uploads/people/staff-2.jpg",
     "ckunCharacter": "/uploads/logos/ckun-character.png",
-    "heroSystem": "/uploads/misc/外観5.jpg",
+    "heroSystem": "/uploads/system/system-dev.jpg",
     "concept1": "/uploads/concept/image1.jpg",
     "concept2": "/uploads/concept/image2.jpg",
     "concept3": "/uploads/concept/image3.jpg",
