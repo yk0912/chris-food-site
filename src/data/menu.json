@@ -4,60 +4,146 @@
     {
       "id": "plainbread",
       "name": "食パン",
-      "shops": ["musashino"],
+      "shops": [
+        "musashino"
+      ],
       "note": "",
       "items": [
-        { "name": "角食パン", "price": "1斤 432円（税込）", "image": "/uploads/menu/kaku.png", "desc": "当店不動の人気No.1。ほんのり甘く、もちもちやわらか。はちみつ不使用で、離乳食にもおすすめです。" },
-        { "name": "プレミアム食パン 清（きよ）", "price": "", "image": "/uploads/menu/kiyo.png", "desc": "発酵乳と新鮮な牛乳をたっぷりと使った食パン。ミルク味と口どけの柔らかさにとことんこだわりました。" },
-        { "name": "ふすま食パン", "price": "1斤 540円（税込）", "image": "/uploads/menu/fusuma.png", "desc": "糖質が気になる方におすすめの逸品。ふすま粉を使用し、栄養満点。やわらかさにも自信があります。" },
-        { "name": "ショコラリッチブレッド", "price": "1斤 518円（税込）", "image": "/uploads/menu/chocolate.png", "desc": "香り高い濃厚チョコレートをたっぷり何層にも折り込みました。チョコ好きのための食パンです。" },
-        { "name": "２色レーズン食パン", "price": "1斤 496円（税込）", "image": "/uploads/menu/2raisin.png", "desc": "サルタナレーズンとグリーンレーズンを贅沢に、バランスよく練りこみました。" },
-        { "name": "ナイアガラレーズン食パン", "price": "1斤 518円（税込）", "image": "/uploads/menu/Niagara.png", "desc": "サンクゼールで人気No.1の白ワイン「ナイアガラブラン」にグリーンレーズンを漬け込みました。" },
-        { "name": "オリーブ食パン", "price": "1斤 529円（税込）", "image": "/uploads/menu/olive.png", "desc": "グリーンオリーブとブラックオリーブをたっぷりチーズと一緒に巻き込みました。" },
-        { "name": "チーズ食パン", "price": "1斤 496円（税込）", "image": "/uploads/menu/cheese.png", "desc": "チーズ好きのための食パンです。うま味がしっかりとしたたっぷりのチーズを巻き込んで焼きました。" },
-        { "name": "チーズカレー食パン", "price": "1斤 529円（税込）", "image": "/uploads/menu/curry.png", "desc": "熟成ビーフカレーと濃厚なチーズを食パン生地でくるんで焼きました。スパイシーな美味しさです。" },
-        { "name": "オレンジ食パン", "price": "1斤 529円（税込）", "image": "/uploads/menu/orange.png", "desc": "バニラクリームとオレンジピールをたっぷり練りこみました。まるでスイーツのような食パン。" },
-        { "name": "くるみクランベリー食パン", "price": "1斤 518円（税込）", "image": "/uploads/menu/kurumi.png", "desc": "栄養たっぷりのスーパーフード、クランベリーと、好相性のくるみを練りこみました。" },
-        { "name": "シナモンアップル食パン", "price": "1斤 529円（税込）", "image": "/uploads/menu/apple.png", "desc": "角切りアップルにシナモンをまぶし包みました。濃厚アーモンドクリームでさらに深い味わいに。" }
+        {
+          "name": "角食パン",
+          "price": "1斤 486円（税込）",
+          "image": "/uploads/menu/kaku.png",
+          "desc": "当店不動の人気No.1。ほんのり甘く、もちもちやわらか。はちみつ不使用で、離乳食にもおすすめです。"
+        },
+        {
+          "name": "ふすま食パン",
+          "price": "1斤 658円（税込）",
+          "image": "/uploads/menu/fusuma.png",
+          "desc": "糖質が気になる方におすすめの逸品。ふすま粉を使用し、栄養満点。やわらかさにも自信があります。"
+        },
+        {
+          "name": "ショコラリッチブレッド",
+          "price": "1斤 583円（税込）",
+          "image": "/uploads/menu/chocolate.png",
+          "desc": "香り高い濃厚チョコレートをたっぷり何層にも折り込みました。チョコ好きのための食パンです。"
+        },
+        {
+          "name": "しっとり贅沢ぶどう食パン",
+          "price": "1斤 583円（税込）",
+          "image": "/uploads/menu/2raisin.png",
+          "desc": "サルタナレーズンとグリーンレーズンを贅沢に、バランスよく練りこみました。"
+        },
+        {
+          "name": "オリーブ食パン",
+          "price": "1斤 594円（税込）",
+          "image": "/uploads/menu/olive.png",
+          "desc": "グリーンオリーブとブラックオリーブをたっぷりチーズと一緒に巻き込みました。"
+        },
+        {
+          "name": "チーズ食パン",
+          "price": "1斤 561円（税込）",
+          "image": "/uploads/menu/cheese.png",
+          "desc": "チーズ好きのための食パンです。うま味がしっかりとしたたっぷりのチーズを巻き込んで焼きました。"
+        },
+        {
+          "name": "オレンジ食パン",
+          "price": "1斤 583円（税込）",
+          "image": "/uploads/menu/orange.png",
+          "desc": "バニラクリームとオレンジピールをたっぷり練りこみました。まるでスイーツのような食パン。"
+        },
+        {
+          "name": "シナモンアップル食パン",
+          "price": "1斤 583円（税込）",
+          "image": "/uploads/menu/apple.png",
+          "desc": "角切りアップルにシナモンをまぶし包みました。濃厚アーモンドクリームでさらに深い味わいに。"
+        }
       ]
     },
     {
       "id": "rollbread",
       "name": "ロールパン",
-      "shops": ["musashino"],
+      "shops": [
+        "musashino"
+      ],
       "note": "",
       "items": [
-        { "name": "塩バターパン", "price": "151円（税込）", "image": "/uploads/menu/sio.png", "desc": "良質なバターを包み、ヒマラヤピンク岩塩を振って焼きました。中はジュワッと、底はカリッと。" },
-        { "name": "ふすま塩バターパン", "price": "162円（税込）", "image": "/uploads/menu/fusumaroll.png", "desc": "ふすま生地（小麦外皮）を使って塩バターパンを作りました。17g/1個のヘルシー塩バターパン。" }
+        {
+          "name": "塩バターパン",
+          "price": "151円（税込）",
+          "image": "/uploads/menu/sio.png",
+          "desc": "良質なバターを包み、ヒマラヤピンク岩塩を振って焼きました。中はジュワッと、底はカリッと。"
+        },
+        {
+          "name": "ふすま塩バターパン",
+          "price": "162円（税込）",
+          "image": "/uploads/menu/fusumaroll.png",
+          "desc": "ふすま生地（小麦外皮）を使って塩バターパンを作りました。17g/1個のヘルシー塩バターパン。"
+        }
       ]
     },
     {
       "id": "sweetsbread",
       "name": "菓子パン",
-      "shops": ["musashino"],
+      "shops": [
+        "musashino"
+      ],
       "note": "",
       "items": [
-        { "name": "あんぱん", "price": "259円（税込）", "image": "/uploads/menu/an.png", "desc": "あんこ好きスタッフたちが「丁度いいあんこの量」を追求したあんぱん。" },
-        { "name": "クリームパン", "price": "291円（税込）", "image": "/uploads/menu/cream.png", "desc": "良質なバニラクリームと濃厚カスタードがたっぷり。甘酸っぱいラズベリーの果実が丸ごと入っています。" }
+        {
+          "name": "あんぱん",
+          "price": "259円（税込）",
+          "image": "/uploads/menu/an.png",
+          "desc": "あんこ好きスタッフたちが「丁度いいあんこの量」を追求したあんぱん。"
+        },
+        {
+          "name": "クリームパン",
+          "price": "291円（税込）",
+          "image": "/uploads/menu/cream.png",
+          "desc": "良質なバニラクリームと濃厚カスタードがたっぷり。甘酸っぱいラズベリーの果実が丸ごと入っています。"
+        }
       ]
     },
     {
       "id": "bagel",
       "name": "ベーグル",
-      "shops": ["seikei-11"],
+      "shops": [
+        "seikei-11"
+      ],
       "note": "成蹊大学11号館無人販売所では、ベーグルを中心に販売しています。毎日11時に商品を入れ替えています。ラインナップは日によって異なります。",
       "items": []
     },
     {
       "id": "sandwich",
       "name": "サンドイッチ",
-      "shops": ["ckun-sandwich"],
+      "shops": [
+        "ckun-sandwich"
+      ],
       "note": "",
       "items": [
-        { "name": "たまごサンド", "price": "367円（税込）", "image": "/uploads/menu/egg.png", "desc": "自家製タマゴサラダとスライスきゅうりをサンド。クリスベーカリーの角食パンとの相性も抜群です。" },
-        { "name": "ツナサンド", "price": "400円（税込）", "image": "/uploads/menu/tsuna.png", "desc": "秘伝の配合で作った自家製ツナフィリングを挟みました。くせになる美味しさです。" },
-        { "name": "メンチカツサンド", "price": "486円（税込）", "image": "/uploads/menu/katsu.png", "desc": "ジューシーなメンチカツとシャキシャキキャベツをサンド。深みのある味を楽しめます。" },
-        { "name": "フィッシュフライサンド", "price": "496円（税込）", "image": "/uploads/menu/fish.png", "desc": "助宗だらフライとキャベツに特製タルタルソースの絶妙なバランス。ランチにもぴったりのボリュームです。" }
+        {
+          "name": "たまごサンド",
+          "price": "367円（税込）",
+          "image": "/uploads/menu/egg.png",
+          "desc": "自家製タマゴサラダとスライスきゅうりをサンド。クリスベーカリーの角食パンとの相性も抜群です。"
+        },
+        {
+          "name": "ツナサンド",
+          "price": "400円（税込）",
+          "image": "/uploads/menu/tsuna.png",
+          "desc": "秘伝の配合で作った自家製ツナフィリングを挟みました。くせになる美味しさです。"
+        },
+        {
+          "name": "メンチカツサンド",
+          "price": "486円（税込）",
+          "image": "/uploads/menu/katsu.png",
+          "desc": "ジューシーなメンチカツとシャキシャキキャベツをサンド。深みのある味を楽しめます。"
+        },
+        {
+          "name": "フィッシュフライサンド",
+          "price": "496円（税込）",
+          "image": "/uploads/menu/fish.png",
+          "desc": "助宗だらフライとキャベツに特製タルタルソースの絶妙なバランス。ランチにもぴったりのボリュームです。"
+        }
       ]
     }
   ],
