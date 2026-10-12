@@ -17,22 +17,31 @@
     ],
     "works": [
       {
-        "name": "清澄白河ゼロベーグル（0 BAGEL）",
-        "type": "ベーグル専門店",
+        "summary": "イタリアンシェフが手掛けるベーグル専門店。清澄白河駅から徒歩5分ほどの場所にあります。",
         "place": "東京・清澄白河",
         "opened": "2026年5月オープン",
-        "image": "",
-        "summary": "イタリアンシェフが手掛けるベーグル専門店。清澄白河駅から徒歩5分ほどの場所にあります。",
-        "scope": ["商品プロデュース", "ベーグル製造技術トレーニング"],
+        "name": "清澄白河ゼロベーグル（0 BAGEL）",
+        "scope": [
+          "商品プロデュース",
+          "ベーグル製造技術トレーニング"
+        ],
+        "links": [
+          {
+            "label": "Instagram",
+            "url": "https://www.instagram.com/0bagel_kantini"
+          },
+          {
+            "label": "紹介ブログ記事",
+            "url": "https://ameblo.jp/avocado-b/entry-12975159315.html"
+          }
+        ],
+        "type": "ベーグル専門店",
+        "image": "/uploads/misc/s__105193474.jpg",
         "features": [
           "1日3回、焼き立てを販売しています。",
           "24時間熟成プレーン、塩バター、Wチョコ、Wチーズ、オレンジクリームチーズなど、種類が豊富です。",
           "サーモンクリームチーズなどのサンドベーグルもあります。",
           "もっちりした食感のベーグルとして紹介され、休日には焼き上がり前から行列ができています。"
-        ],
-        "links": [
-          { "label": "Instagram", "url": "https://www.instagram.com/0bagel_kantini" },
-          { "label": "紹介ブログ記事", "url": "https://ameblo.jp/avocado-b/entry-12975159315.html" }
         ]
       }
     ],
