@@ -8,7 +8,8 @@ import { company, links, shops } from '../lib/data';
       <p>{company.postal}<br />{company.address}</p>
       <p>TEL {company.tel}</p>
       <p class="footer-sns">
-        <a href={links.instagram} target="_blank" rel="noopener">Instagram</a>
+        <a href={links.instagram} target="_blank" rel="noopener">Instagram（クリスベーカリー）</a>
+        {shops.filter((s) => s.instagram).map((s) => <a href={s.instagram} target="_blank" rel="noopener">Instagram（{s.name}）</a>)}
         <a href={links.facebook} target="_blank" rel="noopener">Facebook</a>
         <a href={links.onlineshop} target="_blank" rel="noopener">オンラインショップ</a>
       </p>
