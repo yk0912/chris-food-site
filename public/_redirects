@@ -1,0 +1,15 @@
+# 旧サイト(chrisbakery.jp)のURL → 新サイトのURL（Cloudflare Pages の転送設定 / 301 = 恒久的な移転）
+# 府中本店は閉店したため、旧「店舗情報」ページは武蔵野店へ転送する。
+
+/topics/topics.html                  /news/                              301
+/topics/article.html                 /news/                              301
+/topics/article2.html                /news/                              301
+/topics/                             /news/                              301
+/concept/concept.html                /bakery/concept/                    301
+/concept/                            /bakery/concept/                    301
+/menu/menu.html                      /bakery/menu/                       301
+/menu/                               /bakery/menu/                       301
+/shopinfo/information.html           /bakery/shops/musashino/            301
+/shopinfo/                           /bakery/shops/musashino/            301
+/ckun-sandwich/ckunsandwich.html     /bakery/shops/ckun-sandwich/        301
+/ckun-sandwich/                      /bakery/shops/ckun-sandwich/        301
