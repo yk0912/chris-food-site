@@ -97,8 +97,13 @@
         }
       ],
       "tagline": "学生も、地域の方も。ベーグルをいつでも手軽に。",
-      "photo": "/uploads/shops/sandwich.jpg",
-      "gallery": [],
+      "photo": "/uploads/misc/外観2.jpg",
+      "gallery": [
+        "/uploads/misc/外観4.jpg",
+        "/uploads/misc/し～くんのベーグル屋さん吉祥寺本店販売2.jpg",
+        "/uploads/misc/外観3.jpg",
+        "/uploads/misc/外観1.jpg"
+      ],
       "address": "東京都武蔵野市吉祥寺北町3-3-1 成蹊大学 11号館",
       "type": "無人販売所",
       "tel": "0422-27-6111",
