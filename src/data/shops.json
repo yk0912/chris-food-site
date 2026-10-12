@@ -1,65 +1,113 @@
 {
   "shops": [
     {
-      "slug": "musashino",
-      "name": "クリスベーカリー武蔵野店",
-      "type": "食パンのお店",
-      "tagline": "体と心にやさしい、安心安全な食パンのお店。",
-      "logo": "/uploads/logos/chris-bakery.png",
-      "photo": "/uploads/shops/musashino-1.jpg",
-      "gallery": ["/uploads/shops/musashino-2.jpg", "/uploads/people/staff-1.jpg", "/uploads/people/staff-2.jpg"],
+      "notes": [],
       "postal": "〒180-0012",
-      "address": "東京都武蔵野市緑町2-4-38 おおやまハイツ1階",
-      "mapQuery": "東京都武蔵野市緑町2-4-38 おおやまハイツ",
-      "tel": "0422-27-6111",
-      "info": [
-        { "label": "営業時間", "value": "11:00〜16:00" },
-        { "label": "定休日", "value": "月曜日" },
-        { "label": "駐車場", "value": "なし（近隣にコインパーキングあり）" }
-      ],
-      "description": "角食パンをはじめ、ふすま食パン、フレーバー食パン、塩バターパンなどを焼き上げています。ショートニング・マーガリン・白砂糖は使いません。",
-      "notes": []
-    },
-    {
-      "slug": "ckun-sandwich",
-      "name": "し～くんのサンドイッチ屋さん",
-      "type": "サンドイッチ専門店",
-      "tagline": "クリスベーカリーの食パンで作る、できたてサンドイッチ。",
-      "logo": "/uploads/logos/ckun-sandwich.png",
-      "photo": "/uploads/shops/ckun-1.jpg",
-      "gallery": ["/uploads/shops/ckun-2.jpg", "/uploads/shops/ckun-3.jpg", "/uploads/shops/ckun-4.jpg", "/uploads/shops/ckun-5.jpg"],
-      "postal": "",
-      "address": "東京都府中市宮町1-41-2 ミッテン府中 1階",
-      "mapQuery": "東京都府中市宮町1-41-2 ミッテン府中",
-      "tel": "070-8599-1784",
-      "info": [
-        { "label": "アクセス", "value": "京王線 府中駅（南口）徒歩1分" },
-        { "label": "営業時間", "value": "10:00〜20:00" },
-        { "label": "定休日", "value": "ミッテン府中に準ずる" }
-      ],
-      "description": "自家製のたまごサラダやツナ、メンチカツなど、具材までこだわったサンドイッチ専門店です。",
-      "notes": ["営業時間・定休日は変更になる場合がございます。ご来店前に店舗へご確認ください。"]
-    },
-    {
-      "slug": "seikei-11",
-      "name": "クリスベーカリー成蹊大学11号館無人販売所",
-      "type": "無人販売所",
-      "tagline": "学生も、地域の方も。ベーグルをいつでも手軽に。",
       "logo": "/uploads/logos/chris-bakery.png",
-      "photo": "/uploads/shops/sandwich.jpg",
-      "gallery": [],
-      "postal": "",
-      "address": "東京都武蔵野市吉祥寺北町3-3-1 成蹊大学 11号館",
-      "mapQuery": "成蹊大学 11号館",
-      "tel": "0422-27-6111",
+      "name": "クリスベーカリー武蔵野店",
+      "slug": "musashino",
+      "mapQuery": "東京都武蔵野市緑町2-4-38 おおやまハイツ",
       "info": [
-        { "label": "販売商品", "value": "ベーグルが中心" },
-        { "label": "商品入れ替え", "value": "毎日 11:00" },
-        { "label": "お支払い", "value": "電子決済のみ（クレジットカード・QRコード決済・交通系ICなど）／現金はご利用いただけません" },
-        { "label": "ご利用いただける方", "value": "学生・教職員に限らず、どなたでもご利用いただけます" }
+        {
+          "label": "営業時間",
+          "value": "11:00〜16:00"
+        },
+        {
+          "label": "定休日",
+          "value": "月曜日"
+        },
+        {
+          "label": "駐車場",
+          "value": "なし（近隣にコインパーキングあり）"
+        }
       ],
-      "description": "成蹊大学11号館にある無人販売所です。毎日11時に商品を入れ替えています。",
-      "notes": ["現金はご利用いただけません。電子決済のみとなります。", "お問い合わせは武蔵野店（0422-27-6111）までお願いいたします。"]
+      "tagline": "体と心にやさしい、安心安全な食パンのお店。",
+      "photo": "/uploads/misc/店舗外観.jpg",
+      "gallery": [
+        "/uploads/misc/クリスベーカリー武蔵野店製造2.jpg",
+        "/uploads/misc/クリスベーカリー武蔵野店販売.jpg"
+      ],
+      "address": "東京都武蔵野市緑町2-4-38 おおやまハイツ1階",
+      "type": "食パンのお店",
+      "tel": "0422-27-6111",
+      "description": "角食パンをはじめ、ふすま食パン、フレーバー食パン、塩バターパンなどを焼き上げています。ショートニング・マーガリン・白砂糖は使いません。"
+    },
+    {
+      "notes": [
+        "営業時間・定休日は変更になる場合がございます。ご来店前に店舗へご確認ください。"
+      ],
+      "postal": "",
+      "logo": "/uploads/logos/ckun-sandwich.png",
+      "name": "し～くんのサンドイッチ屋さん",
+      "slug": "ckun-sandwich",
+      "mapQuery": "東京都府中市宮町1-41-2 ミッテン府中",
+      "info": [
+        {
+          "label": "アクセス",
+          "value": "京王線 府中駅（南口）徒歩1分"
+        },
+        {
+          "label": "営業時間",
+          "value": "10:00〜20:00"
+        },
+        {
+          "label": "定休日",
+          "value": "ミッテン府中に準ずる"
+        }
+      ],
+      "tagline": "クリスベーカリーの食パンで作る、できたてサンドイッチ。",
+      "photo": "/uploads/shops/ckun-1.jpg",
+      "gallery": [
+        "/uploads/shops/ckun-2.jpg",
+        "/uploads/shops/ckun-3.jpg",
+        "/uploads/shops/ckun-4.jpg",
+        "/uploads/shops/ckun-5.jpg"
+      ],
+      "address": "東京都府中市宮町1-41-2 ミッテン府中 1階",
+      "type": "サンドイッチ専門店",
+      "tel": "070-8599-1784",
+      "description": "自家製のたまごサラダやツナ、メンチカツなど、具材までこだわったサンドイッチ専門店です。"
+    },
+    {
+      "notes": [
+        "現金はご利用いただけません。電子決済のみとなります。",
+        "お問い合わせは武蔵野店（0422-27-6111）までお願いいたします。"
+      ],
+      "postal": "",
+      "logo": "/uploads/logos/chris-bakery.png",
+      "name": "クリスベーカリー成蹊大学11号館無人販売所",
+      "slug": "seikei-11",
+      "mapQuery": "成蹊大学 11号館",
+      "info": [
+        {
+          "label": "販売商品",
+          "value": "ベーグルが中心"
+        },
+        {
+          "label": "商品入れ替え",
+          "value": "毎日 11:00"
+        },
+        {
+          "label": "お支払い",
+          "value": "電子決済のみ（クレジットカード・QRコード決済・交通系ICなど）／現金はご利用いただけません"
+        },
+        {
+          "label": "ご利用いただける方",
+          "value": "学生・教職員に限らず、どなたでもご利用いただけます"
+        }
+      ],
+      "tagline": "学生も、地域の方も。ベーグルをいつでも手軽に。",
+      "photo": "/uploads/misc/外観2.jpg",
+      "gallery": [
+        "/uploads/misc/外観4.jpg",
+        "/uploads/misc/し～くんのベーグル屋さん吉祥寺本店販売2.jpg",
+        "/uploads/misc/外観3.jpg",
+        "/uploads/misc/外観1.jpg"
+      ],
+      "address": "東京都武蔵野市吉祥寺北町3-3-1 成蹊大学 11号館",
+      "type": "無人販売所",
+      "tel": "0422-27-6111",
+      "description": "成蹊大学11号館にある無人販売所です。毎日11時に商品を入れ替えています。"
     }
   ]
 }

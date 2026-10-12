@@ -1,35 +1,44 @@
 {
   "company": {
-    "name": "クリスフードサービス合同会社",
-    "nameEn": "Chris Food Service LLC",
-    "ceoTitle": "代表社員",
-    "ceo": "木内 雄介",
     "founded": "2016年6月1日",
-    "established": "2021年9月9日",
-    "postal": "〒180-0012",
-    "address": "東京都武蔵野市緑町2-4-38 おおやまハイツ1階",
-    "tel": "0422-27-6111",
-    "capital": "",
     "employees": "",
-    "businesses": [
-      "飲食事業（ベーカリー事業・ベーカリープロデュース事業）",
-      "システム開発事業（受託開発）",
-      "教育事業（リスキリング事業）"
-    ],
-    "history": [
-      { "date": "2011年", "text": "システムエンジニアとして勤務しながら、パン作りを学び始める" },
-      { "date": "2016年6月", "text": "「クリスベーカリー」を開業（創業）" },
-      { "date": "2021年9月", "text": "クリスフードサービス合同会社を設立" }
-    ],
     "message": [
       "「体に安全なものを使った飲食店をしたい」。システムエンジニアとして働いていた私が、パン屋を開いたのは、そんな想いからでした。",
       "食べ物は、体だけでなく心の形成にも影響する。そう考えて、少しでも疑問を抱いた材料は使わず、子どもからシニアまで安心して食べられるパンをつくってきました。",
       "いま、私たちの事業は3つに広がっています。パンづくりで培った「食」の現場経験を活かすベーカリー事業とプロデュース事業。システムエンジニアとしての経験を活かす受託開発。そして、働く人が新しい力を身につけるための教育事業。",
       "分野は違っても、根底にあるのは「誰かの役に立つものを、誠実につくる」ことです。これからも、お客様と地域に信頼していただける会社であり続けます。"
-    ]
+    ],
+    "capital": "",
+    "postal": "〒180-0012",
+    "ceoTitle": "代表社員",
+    "name": "クリスフードサービス合同会社",
+    "ceo": "木内 雄介",
+    "businesses": [
+      "飲食事業（ベーカリー事業・ベーカリープロデュース事業）",
+      "システム開発事業（受託開発）",
+      "教育事業（リスキリング事業）"
+    ],
+    "nameEn": "Chris Food Service LLC",
+    "history": [
+      {
+        "date": "2011年",
+        "text": "システムエンジニアとして勤務しながら、パン作りを学び始める"
+      },
+      {
+        "date": "2016年6月",
+        "text": "「クリスベーカリー」を開業（創業）"
+      },
+      {
+        "date": "2021年9月",
+        "text": "クリスフードサービス合同会社を設立"
+      }
+    ],
+    "address": "東京都武蔵野市緑町2-4-38 おおやまハイツ1階",
+    "established": "2021年9月9日",
+    "tel": "0422-27-6111"
   },
   "links": {
-    "instagram": "https://www.instagram.com/chrisbakery_fuchu/",
+    "instagram": "https://www.instagram.com/chrisbakery_musashino/",
     "facebook": "https://www.facebook.com/chrisbakery.jp/",
     "onlineshop": "https://chrisbakery.thebase.in/"
   },
@@ -37,28 +46,28 @@
     "endpoint": "https://formspree.io/f/REPLACE_ME"
   },
   "images": {
-    "corpHorizontal": "/uploads/logos/corp-horizontal-ja.png",
-    "corpMark":"/uploads/logos/corp-mark.svg",
-    "corpLogo": "/uploads/logos/corp-full.png",
-    "heroMain":"/uploads/shops/musashino-1.jpg",
-    "heroFood": "/uploads/people/baking.jpg",
-    "heroSystem": "/uploads/people/kiuchi.jpg",
-    "heroEducation": "/uploads/people/staff-1.jpg",
-    "bakeryHero": "/uploads/shops/musashino-1.jpg",
-    "bakeryLogo": "/uploads/logos/chris-bakery.png",
-    "ckunLogo": "/uploads/logos/ckun-sandwich.png",
-    "ckunCharacter": "/uploads/logos/ckun-character.png",
+    "systemPhoto": "/uploads/people/kiuchi.jpg",
+    "ogImage": "/uploads/shops/musashino-1.jpg",
     "ceoPhoto": "/uploads/people/kiuchi.jpg",
     "aboutPhoto": "/uploads/people/staff-2.jpg",
-    "producePhoto": "/uploads/people/baking.jpg",
-    "systemPhoto": "/uploads/people/kiuchi.jpg",
-    "reskillingPhoto": "/uploads/people/staff-1.jpg",
+    "ckunCharacter": "/uploads/logos/ckun-character.png",
+    "heroSystem": "/uploads/misc/外観5.jpg",
     "concept1": "/uploads/concept/image1.jpg",
     "concept2": "/uploads/concept/image2.jpg",
     "concept3": "/uploads/concept/image3.jpg",
+    "bakeryLogo": "/uploads/logos/chris-bakery.png",
+    "ckunLogo": "/uploads/logos/ckun-sandwich.png",
     "concept4": "/uploads/concept/image4.jpg",
+    "heroEducation": "/uploads/misc/427746620_1115682412895629_3494560069490934342_n.jpg",
+    "reskillingPhoto": "/uploads/people/staff-1.jpg",
+    "corpHorizontal": "/uploads/logos/corp-horizontal-ja.png",
+    "producePhoto": "/uploads/people/baking.jpg",
+    "heroMain": "/uploads/shops/musashino-1.jpg",
+    "corpLogo": "/uploads/logos/corp-full.png",
+    "corpMark": "/uploads/logos/corp-mark.svg",
+    "heroFood": "/uploads/people/baking.jpg",
+    "bakeryHero": "/uploads/shops/musashino-1.jpg",
     "commitment1": "/uploads/concept/image5.jpg",
-    "commitment2": "/uploads/concept/image6.jpg",
-    "ogImage": "/uploads/shops/musashino-1.jpg"
+    "commitment2": "/uploads/concept/image6.jpg"
   }
 }
