@@ -1,0 +1,33 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import ContactCta from '../../components/ContactCta.astro';
+import { img } from '../../lib/data';
+
+const items = [
+  { href: '/food/', tag: '飲食事業', title: '飲食事業', text: 'ベーカリー事業（クリスベーカリー3店舗）と、パン屋・ベーグル店・サンドイッチ店のプロデュース事業。', image: img.heroFood, subs: [{ label: 'ベーカリー事業', href: '/bakery/' }, { label: 'ベーカリープロデュース事業', href: '/produce/' }] },
+  { href: '/system/', tag: 'システム開発事業', title: 'システム開発事業', text: '業務システム・Webシステムの受託開発。', image: img.heroSystem, subs: [{ label: '受託開発', href: '/system/' }] },
+  { href: '/reskilling/', tag: '教育事業', title: '教育事業', text: '事業展開等リスキリング支援コースの活用をめざす企業向けのリスキリング講座。', image: img.heroEducation, subs: [{ label: 'リスキリング事業', href: '/reskilling/' }] },
+];
+---
+<Base title="事業紹介" description="クリスフードサービス合同会社の事業紹介。飲食事業（ベーカリー・ベーカリープロデュース）、システム開発事業、教育事業（リスキリング）。">
+  <PageHero title="事業紹介" eyebrow="BUSINESS" lead="食・技術・学びの3つの分野で、お客様のお役に立つ事業を行っています。" crumbs={[{ label: '事業紹介' }]} />
+  <section class="section">
+    <div class="wrap">
+      <div class="grid grid-3">
+        {items.map((b) => (
+          <div class="card">
+            <img class="thumb" src={b.image} alt="" loading="lazy" />
+            <div class="body">
+              <span class="tag">{b.tag}</span>
+              <h3><a href={b.href} style="text-decoration:none;color:inherit">{b.title}</a></h3>
+              <p>{b.text}</p>
+              <ul style="margin:0">{b.subs.map((s) => <li><a href={s.href}>{s.label}</a></li>)}</ul>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+  <ContactCta />
+</Base>

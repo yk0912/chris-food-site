@@ -1,0 +1,18 @@
+---
+const path = Astro.url.pathname;
+const items = [
+  { href: '/bakery/', label: 'ベーカリートップ', exact: true },
+  { href: '/bakery/concept/', label: 'コンセプト' },
+  { href: '/bakery/menu/', label: 'メニュー' },
+  { href: '/bakery/shops/', label: '店舗' },
+];
+---
+<nav class="subnav" aria-label="ベーカリー事業メニュー">
+  <div class="wrap">
+    <ul>
+      {items.map((i) => (
+        <li><a href={i.href} aria-current={(i.exact ? path === i.href : path.startsWith(i.href)) ? 'page' : undefined}>{i.label}</a></li>
+      ))}
+    </ul>
+  </div>
+</nav>

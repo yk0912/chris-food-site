@@ -1,0 +1,62 @@
+---
+import Base from '../../../layouts/Base.astro';
+import PageHero from '../../../components/PageHero.astro';
+import BakerySubNav from '../../../components/BakerySubNav.astro';
+import ShopInfo from '../../../components/ShopInfo.astro';
+import { shops, menu, links } from '../../../lib/data';
+
+export function getStaticPaths() {
+  return shops.map((shop) => ({ params: { slug: shop.slug }, props: { shop } }));
+}
+const { shop } = Astro.props;
+const cats = menu.categories.filter((c) => c.shops.includes(shop.slug));
+---
+<Base title={`${shop.name}`} description={`${shop.name}（${shop.address}）の営業時間・アクセス・取扱商品のご案内。${shop.tagline}`} image={shop.photo}>
+  <PageHero theme="bakery" title={shop.name} eyebrow={shop.type} lead={shop.tagline} crumbs={[{ label: 'ベーカリー事業', href: '/bakery/' }, { label: '店舗一覧', href: '/bakery/shops/' }, { label: shop.name }]} />
+  <BakerySubNav />
+  <div class="bakery-theme">
+    <section class="section">
+      <div class="wrap split">
+        <div>
+          <h2 class="section-title" style="text-align:left"><small>ABOUT</small>お店について</h2>
+          <p>{shop.description}</p>
+          {shop.slug === 'seikei-11' && (
+            <div class="notice"><strong>ご利用の際のご案内</strong><br />お支払いは電子決済（クレジットカード・QRコード決済・交通系ICなど）のみです。現金はご利用いただけません。</div>
+          )}
+        </div>
+        <img src={shop.photo} alt={shop.name} />
+      </div>
+      {shop.gallery.length > 0 && (
+        <div class="wrap gallery">{shop.gallery.map((g: string) => <img src={g} alt="" loading="lazy" />)}</div>
+      )}
+    </section>
+
+    <section class="section alt">
+      <div class="wrap narrow">
+        <h2 class="section-title"><small>INFORMATION</small>店舗情報・アクセス</h2>
+        <div class="info-table-wrap"><ShopInfo shop={shop} showMap={false} /></div>
+        <div class="map"><iframe title={`${shop.name}の地図`} src={`https://www.google.com/maps?q=${encodeURIComponent(shop.mapQuery)}&output=embed&hl=ja`} loading="lazy"></iframe></div>
+      </div>
+    </section>
+
+    {cats.length > 0 && (
+      <section class="section">
+        <div class="wrap narrow center">
+          <h2 class="section-title"><small>MENU</small>取扱商品</h2>
+          <p>{cats.map((c) => c.name).join('・')}を取り扱っています。</p>
+          <p><a class="btn" href="/bakery/menu/">メニューを見る</a></p>
+        </div>
+      </section>
+    )}
+
+    <section class="section alt">
+      <div class="wrap center narrow">
+        <h2 class="section-title">他の店舗</h2>
+        <ul style="list-style:none;padding:0;display:grid;gap:10px">
+          {shops.filter((s) => s.slug !== shop.slug).map((s) => <li><a href={`/bakery/shops/${s.slug}/`}>{s.name}</a></li>)}
+        </ul>
+        <p><a href={links.instagram} target="_blank" rel="noopener">Instagram</a>　／　<a href={links.onlineshop} target="_blank" rel="noopener">オンラインショップ</a></p>
+      </div>
+    </section>
+  </div>
+</Base>

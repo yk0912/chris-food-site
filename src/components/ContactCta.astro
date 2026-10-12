@@ -1,0 +1,11 @@
+---
+interface Props { type?: string; title?: string; text?: string; }
+const { type = '', title = 'お気軽にご相談ください', text = 'お問い合わせフォームよりご連絡ください。内容を確認のうえ、担当者よりご連絡します。' } = Astro.props;
+---
+<section class="cta">
+  <div class="wrap">
+    <h2>{title}</h2>
+    <p>{text}</p>
+    <a class="btn btn-lg" href={`/contact/${type ? `?type=${type}` : ''}`}>お問い合わせフォームへ</a>
+  </div>
+</section>

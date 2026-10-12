@@ -1,0 +1,68 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import { company, img, mapEmbed, mapLink } from '../lib/data';
+
+const rows = [
+  ['商号', company.name],
+  ['英文名', company.nameEn],
+  ['創業', company.founded],
+  ['設立', company.established],
+  [company.ceoTitle, company.ceo],
+  ['所在地', `${company.postal} ${company.address}`],
+  ['電話番号', company.tel],
+  ['資本金', company.capital],
+  ['従業員数', company.employees],
+  ['事業内容', ''],
+].filter(([, v]) => v || false);
+const q = '東京都武蔵野市緑町2-4-38 おおやまハイツ';
+---
+<Base title="会社概要" description={`${company.name}の会社概要。商号、設立、代表者、所在地、事業内容、沿革をご案内します。`}>
+  <PageHero title="会社概要" eyebrow="COMPANY" crumbs={[{ label: '会社概要' }]} />
+
+  <section class="section">
+    <div class="wrap narrow">
+      <img src={img.corpLogo} alt={company.name} width="260" style="margin:0 auto 32px;width:260px" />
+      <h2 class="section-title"><small>PROFILE</small>会社情報</h2>
+      <div class="info-table-wrap">
+        <table class="info-table">
+          <tbody>
+            {rows.map(([k, v]) => <tr><th>{k}</th><td>{v}</td></tr>)}
+            <tr><th>事業内容</th><td><ul style="margin:0;padding-left:1.2em">{company.businesses.map((b) => <li>{b}</li>)}</ul></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="wrap split portrait">
+      <img src={img.ceoPhoto} alt={`代表社員 ${company.ceo}`} loading="lazy" />
+      <div>
+        <h2 class="section-title" style="text-align:left"><small>MESSAGE</small>代表メッセージ</h2>
+        {company.message.map((p) => <p>{p}</p>)}
+        <p style="text-align:right"><strong>{company.ceoTitle}　{company.ceo}</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap narrow">
+      <h2 class="section-title"><small>HISTORY</small>沿革</h2>
+      <div class="info-table-wrap">
+        <table class="info-table"><tbody>
+          {company.history.map((h) => <tr><th>{h.date}</th><td>{h.text}</td></tr>)}
+        </tbody></table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="wrap narrow">
+      <h2 class="section-title"><small>ACCESS</small>所在地</h2>
+      <p class="center">{company.postal}　{company.address}<br />TEL {company.tel}（クリスベーカリー武蔵野店と同じ所在地です）</p>
+      <div class="map"><iframe title="会社所在地の地図" src={mapEmbed(q)} loading="lazy"></iframe></div>
+      <p class="center" style="margin-top:12px"><a href={mapLink(q)} target="_blank" rel="noopener">Googleマップで見る</a></p>
+    </div>
+  </section>
+</Base>

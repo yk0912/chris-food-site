@@ -1,0 +1,60 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import BakerySubNav from '../../components/BakerySubNav.astro';
+import { img, company } from '../../lib/data';
+
+const stories = [
+  { img: img.concept1, title: '健康に気を遣う方々が安心して、楽しんで食べられるパンを。', body: '<span class="marker">「体に安全なものをつかった飲食店をしたい」</span>。システムエンジニアとして働きながらパン作りを学び、選んだのは、子どもからシニアまで幅広く食べられる食パンを主力にしたパン屋でした。パンを選んだ理由は、添加物が多く使われている食品のひとつだったから。健康への想いからクリスベーカリーはスタートしました。' },
+  { img: img.concept2, title: '日々の食事から身体に良いものを摂ってもらいたい。', body: 'オーナー自身が命にかかわる病気にかかったとき、徹底的に食事を見直したところ、薬に頼らなくても体調が劇的に回復した経験があります。<span class="marker">材料は定期的に見直しを行い、最新の健康情報を取り入れ、レシピを常にアップデート</span>しています。' },
+  { img: img.concept3, title: 'パン作りは「人の心を元気にする」ことを実感。', body: '10年間、悩み電話相談の活動をしてきた経験があり、そこで多くの人の声を聞くなかで、食べ物は体だけでなく心の形成にも大きく影響しているのではないか、と考えるようになりました。<span class="marker">私たちはお客様の体と心の健康を支える役目を担っている</span>と考えています。' },
+  { img: img.concept4, title: 'おいしいパンには、おいしさ以上の価値がある。', body: 'あるお客様は、普段は無口なご主人がパンのおいしさに驚いて「このパンおいしいね！」と一言。これをきっかけに、食卓で会話が増えていったそうです。<span class="marker">食欲を満たすものから、コミュニケーションのきっかけへ。</span>お客様の要望や地域が必要としていることを踏まえて、これからも商品開発を行っていきます。' },
+];
+const commits = [
+  { h: '健康を害する恐れがある材料は使用しません。', p: 'ショートニング、マーガリン不使用。白砂糖も不使用。食品添加物の少ない材料を採用しています。' },
+  { h: '安心・安全な材料を選びます。', p: '材料は薬膳や様々な健康法を熟知しているオーナーが定期的に見直し、最新の健康情報を取り入れています。' },
+  { h: 'おいしさを提供します。', p: '独自の製法により、独特なもちもち感や風味を生み出し、添加物に頼らずにやわらかさやおいしさを維持しています。' },
+];
+---
+<Base title="コンセプト｜クリスベーカリー" description="クリスベーカリーのコンセプト。オーナーとパンのおはなし、パンへのこだわりをご紹介します。">
+  <PageHero theme="bakery" title="コンセプト" eyebrow="CONCEPT" lead="「このお店で買うものなら大丈夫。」そんな安心感を持って買い物できるパン屋をつくりたい。食パンに込めた想い。" crumbs={[{ label: 'ベーカリー事業', href: '/bakery/' }, { label: 'コンセプト' }]} />
+  <BakerySubNav />
+  <div class="bakery-theme">
+    <section class="section">
+      <div class="wrap">
+        <h2 class="section-title"><small>STORY</small>オーナーとパンのおはなし</h2>
+        {stories.map((s, i) => (
+          <div class={`story split ${i % 2 ? 'rev' : ''}`}>
+            <img src={s.img} alt="" loading="lazy" />
+            <div><h3>{s.title}</h3><p set:html={s.body} /></div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="section alt">
+      <div class="wrap split portrait">
+        <img src={img.ceoPhoto} alt={`オーナーシェフ ${company.ceo}`} loading="lazy" />
+        <div>
+          <h2 class="section-title" style="text-align:left"><small>OWNER</small>オーナーシェフ・{company.ceo}</h2>
+          <p>東京都生まれ。2011年〜システムエンジニアとして会社勤めをしながら学校に通い、パン作りを学ぶ。</p>
+          <p>卒業後も仕事を続けつつ、月1回のペースで趣味としてのパン教室を開催。国際支援イベントでパンを教える活動に携わり、パン作りが「人の心を元気にする」ことを実感。10年間参加していた悩み電話相談の活動を通し、「体に安全なものをつかった飲食店をしたい」という想いから、幅広い年代の方が好む食パンを主力商品にしたパン屋の開業を決意。</p>
+          <p>2016年〜クリスベーカリーをオープン。現在も薬膳や栄養学を学び、健康を気遣った、安心安全なパンの商品開発を行っている。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap narrow">
+        <h2 class="section-title"><small>COMMITMENT</small>パンへのこだわり</h2>
+        <ul class="commit">
+          {commits.map((c, i) => (
+            <li><span class="no">0{i + 1}</span><div><h4>{c.h}</h4><p>{c.p}</p></div></li>
+          ))}
+        </ul>
+        <div class="gallery"><img src={img.commitment1} alt="" loading="lazy" /><img src={img.commitment2} alt="" loading="lazy" /></div>
+        <p class="center" style="margin-top:32px"><a class="btn" href="/bakery/menu/">メニューを見る</a></p>
+      </div>
+    </section>
+  </div>
+</Base>

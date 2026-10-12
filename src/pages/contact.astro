@@ -1,0 +1,44 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import { site, company } from '../lib/data';
+const types = [
+  ['bakery', 'ベーカリー（店舗・商品について）'],
+  ['produce', 'ベーカリープロデュースのご相談'],
+  ['system', 'システム開発のご相談'],
+  ['reskilling', 'リスキリング講座のお申込み・ご相談'],
+  ['recruit', '採用について'],
+  ['other', 'その他'],
+];
+---
+<Base title="お問い合わせ" description="クリスフードサービス合同会社へのお問い合わせ。プロデュース・システム開発・リスキリング講座のご相談はこちらから。">
+  <PageHero title="お問い合わせ" eyebrow="CONTACT" lead="ご相談の内容に合わせて、お問い合わせ種別をお選びください。内容を確認のうえ、担当者よりご連絡します。" crumbs={[{ label: 'お問い合わせ' }]} />
+  <section class="section">
+    <div class="wrap">
+      <form class="form" method="POST" action={site.form.endpoint} id="contact-form">
+        <div>
+          <label for="type">お問い合わせ種別<span class="req">必須</span></label>
+          <select id="type" name="お問い合わせ種別" required>
+            {types.map(([v, l]) => <option value={v}>{l}</option>)}
+          </select>
+        </div>
+        <div><label for="name">お名前<span class="req">必須</span></label><input id="name" name="お名前" required autocomplete="name" /></div>
+        <div><label for="company">会社名・屋号（法人の方）</label><input id="company" name="会社名" autocomplete="organization" /></div>
+        <div><label for="email">メールアドレス<span class="req">必須</span></label><input id="email" name="email" type="email" required autocomplete="email" /></div>
+        <div><label for="tel">電話番号</label><input id="tel" name="電話番号" type="tel" autocomplete="tel" /></div>
+        <div><label for="message">お問い合わせ内容<span class="req">必須</span></label><textarea id="message" name="お問い合わせ内容" required></textarea></div>
+        <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" />
+        <label class="check"><input type="checkbox" required /><span><a href="/privacy/" target="_blank">個人情報保護方針</a>に同意します。</span></label>
+        <p class="center"><button class="btn btn-lg" type="submit">送信する</button></p>
+      </form>
+      <p class="center notes" style="margin-top:32px">お急ぎの場合は {company.name}（TEL {company.tel}）までお電話ください。<br />ベーカリー店舗の営業時間中は、お電話に出られない場合があります。</p>
+    </div>
+  </section>
+  <script is:inline>
+    (function () {
+      var t = new URLSearchParams(location.search).get('type');
+      var s = document.getElementById('type');
+      if (t && s && s.querySelector('option[value="' + t + '"]')) s.value = t;
+    })();
+  </script>
+</Base>

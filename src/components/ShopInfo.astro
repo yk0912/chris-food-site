@@ -1,0 +1,16 @@
+---
+import { mapEmbed, mapLink } from '../lib/data';
+interface Props { shop: any; showMap?: boolean; }
+const { shop, showMap = true } = Astro.props;
+---
+<div class="shop-info">
+  <table class="info-table">
+    <tbody>
+      <tr><th>所在地</th><td>{shop.postal && <>{shop.postal}<br /></>}{shop.address}<br /><a href={mapLink(shop.mapQuery)} target="_blank" rel="noopener">Googleマップで見る</a></td></tr>
+      {shop.tel && <tr><th>電話</th><td><a href={`tel:${shop.tel.replace(/-/g, '')}`}>{shop.tel}</a></td></tr>}
+      {shop.info.map((r: any) => <tr><th>{r.label}</th><td>{r.value}</td></tr>)}
+    </tbody>
+  </table>
+  {shop.notes?.length > 0 && <ul class="notes">{shop.notes.map((n: string) => <li>{n}</li>)}</ul>}
+  {showMap && <div class="map"><iframe title={`${shop.name}の地図`} src={mapEmbed(shop.mapQuery)} loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>}
+</div>

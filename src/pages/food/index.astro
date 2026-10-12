@@ -1,0 +1,26 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import ContactCta from '../../components/ContactCta.astro';
+import { img } from '../../lib/data';
+---
+<Base title="飲食事業" description="クリスフードサービスの飲食事業。ベーカリー事業（クリスベーカリー）とベーカリープロデュース事業をご紹介します。">
+  <PageHero title="飲食事業" eyebrow="FOOD" lead="「体に安全なものを使った飲食店をしたい」。その想いから、食パンを主力にしたパン屋を開業し、現在は3店舗を運営しています。" crumbs={[{ label: '事業紹介', href: '/business/' }, { label: '飲食事業' }]} />
+  <section class="section">
+    <div class="wrap">
+      <div class="grid grid-2">
+        <a class="card" href="/bakery/">
+          <img class="thumb" src={img.bakeryHero} alt="" loading="lazy" />
+          <div class="body"><span class="tag">ベーカリー事業</span><h3>クリスベーカリー</h3>
+            <p>ショートニング・マーガリン・白砂糖を使わない、体にやさしい食パンのお店。武蔵野店、し～くんのサンドイッチ屋さん、成蹊大学11号館無人販売所の3店舗。</p><span class="more">詳しく見る →</span></div>
+        </a>
+        <a class="card" href="/produce/">
+          <img class="thumb" src={img.producePhoto} alt="" loading="lazy" />
+          <div class="body"><span class="tag">ベーカリープロデュース事業</span><h3>ベーカリープロデュース</h3>
+            <p>ベーカリー、ベーグル専門店、サンドイッチ専門店のプロデュース。商品・技術・店舗設計・コンセプトなど、ご要望に応じて対応します。</p><span class="more">詳しく見る →</span></div>
+        </a>
+      </div>
+    </div>
+  </section>
+  <ContactCta type="produce" title="パン屋の開業・リニューアルをお考えの方へ" text="商品開発のみ、技術指導のみなど、一部のご依頼も承ります。" />
+</Base>

@@ -1,0 +1,31 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import { company, links } from '../lib/data';
+
+// ※ 講座の料金・支払方法が確定したら、下記の「要入力」を実際の内容に差し替えてください（管理画面の対象外・このファイルを編集）。
+const rows: [string, string][] = [
+  ['販売事業者', company.name],
+  ['運営責任者', company.ceo],
+  ['所在地', `${company.postal} ${company.address}`],
+  ['電話番号', company.tel],
+  ['メールアドレス', 'お問い合わせフォームよりご連絡ください'],
+  ['販売価格', '各講座のページに記載する価格（税込）によります。'],
+  ['商品代金以外の必要料金', '要入力（振込手数料など、お客様負担の費用がある場合に記載）'],
+  ['お支払方法', '要入力'],
+  ['お支払時期', '要入力'],
+  ['サービスの提供時期', '各講座の開講日に基づきます。'],
+  ['キャンセル・返金', '各講座のページに記載のキャンセル規定によります。'],
+];
+---
+<Base title="特定商取引法に基づく表記" description={`${company.name}の特定商取引法に基づく表記（講座の販売について）。`} noindex>
+  <PageHero title="特定商取引法に基づく表記" eyebrow="LEGAL" crumbs={[{ label: '特定商取引法に基づく表記' }]} />
+  <section class="section">
+    <div class="wrap narrow">
+      <p class="notice">この表記は、リスキリング講座などの有料サービスの販売に関するものです。クリスベーカリーのオンラインショップの表記は、<a href={links.onlineshop} target="_blank" rel="noopener">オンラインショップ</a>をご確認ください。</p>
+      <div class="info-table-wrap" style="margin-top:24px"><table class="info-table"><tbody>
+        {rows.map(([k, v]) => <tr><th>{k}</th><td>{v}</td></tr>)}
+      </tbody></table></div>
+    </div>
+  </section>
+</Base>

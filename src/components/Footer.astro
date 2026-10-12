@@ -1,0 +1,46 @@
+---
+import { company, links, shops } from '../lib/data';
+---
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-company">
+      <p class="footer-name">{company.name}</p>
+      <p>{company.postal}<br />{company.address}</p>
+      <p>TEL {company.tel}</p>
+      <p class="footer-sns">
+        <a href={links.instagram} target="_blank" rel="noopener">Instagram</a>
+        <a href={links.facebook} target="_blank" rel="noopener">Facebook</a>
+        <a href={links.onlineshop} target="_blank" rel="noopener">オンラインショップ</a>
+      </p>
+    </div>
+    <div>
+      <p class="footer-title">事業紹介</p>
+      <ul>
+        <li><a href="/food/">飲食事業</a></li>
+        <li><a href="/bakery/">ベーカリー事業</a></li>
+        <li><a href="/produce/">ベーカリープロデュース事業</a></li>
+        <li><a href="/system/">システム開発事業</a></li>
+        <li><a href="/reskilling/">教育事業（リスキリング）</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-title">クリスベーカリーの店舗</p>
+      <ul>
+        {shops.map((s) => <li><a href={`/bakery/shops/${s.slug}/`}>{s.name}</a></li>)}
+      </ul>
+    </div>
+    <div>
+      <p class="footer-title">企業情報</p>
+      <ul>
+        <li><a href="/about/">会社概要</a></li>
+        <li><a href="/news/">お知らせ</a></li>
+        <li><a href="/recruit/">採用情報</a></li>
+        <li><a href="/contact/">お問い合わせ</a></li>
+        <li><a href="/privacy/">個人情報保護方針</a></li>
+        <li><a href="/tokushoho/">特定商取引法に基づく表記</a></li>
+        <li><a href="/sitemap/">サイトマップ</a></li>
+      </ul>
+    </div>
+  </div>
+  <p class="copy"><small>© 2021 {company.nameEn} / {company.name} All Rights Reserved.</small></p>
+</footer>

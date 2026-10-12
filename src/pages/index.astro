@@ -1,0 +1,98 @@
+---
+import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+import { company, img, shops, fmtDate } from '../lib/data';
+
+const news = (await getCollection('news')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()).slice(0, 3);
+const businesses = [
+  { href: '/food/', tag: '飲食事業', title: 'ベーカリー・プロデュース', text: '体と心にやさしい食パンのお店「クリスベーカリー」を3店舗運営。パン屋・ベーグル店・サンドイッチ店のプロデュースも行います。', image: img.heroFood },
+  { href: '/system/', tag: 'システム開発事業', title: '受託開発', text: 'システムエンジニアとしての経験を活かし、業務システムやWebシステムを受託開発します。', image: img.heroSystem },
+  { href: '/reskilling/', tag: '教育事業', title: 'リスキリング', text: '「事業展開等リスキリング支援コース」の活用をめざす企業向けに、リスキリング講座を運営します。', image: img.heroEducation },
+];
+---
+<Base>
+  <section class="top-hero" style={`--hero:url('${img.heroMain}')`}>
+    <div class="bg"></div>
+    <div class="wrap">
+      <h1>食と、技術と、学びで。<br />暮らしと仕事に、安心を。</h1>
+      <p>クリスフードサービスは、東京・武蔵野市でパン屋「クリスベーカリー」を営みながら、システム開発と人材育成にも取り組む会社です。</p>
+      <div class="btns">
+        <a class="btn" href="/business/">事業紹介を見る</a>
+        <a class="btn btn-outline" href="/about/">会社概要</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h2 class="section-title"><small>BUSINESS</small>3つの事業</h2>
+      <div class="grid grid-3">
+        {businesses.map((b) => (
+          <a class="card" href={b.href}>
+            <img class="thumb" src={b.image} alt="" loading="lazy" />
+            <div class="body">
+              <span class="tag">{b.tag}</span>
+              <h3>{b.title}</h3>
+              <p>{b.text}</p>
+              <span class="more">詳しく見る →</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="wrap">
+      <h2 class="section-title"><small>CHRIS BAKERY</small>クリスベーカリーの3店舗</h2>
+      <p class="center narrow">「少しでも疑問を抱いた材料は使わない」。子どもからシニアまで安心して食べられるパンを、3つの店舗でお届けしています。</p>
+      <div class="grid grid-3" style="margin-top:32px">
+        {shops.map((s) => (
+          <a class="card shop-card" href={`/bakery/shops/${s.slug}/`}>
+            <img class="thumb" src={s.photo} alt={s.name} loading="lazy" />
+            <div class="body">
+              <span class="tag">{s.type}</span>
+              <h3>{s.name}</h3>
+              <p>{s.address}<br />{s.info.find((r) => r.label === '営業時間' || r.label === '商品入れ替え') ? `${s.info.find((r) => r.label === '営業時間' || r.label === '商品入れ替え')!.label}：${s.info.find((r) => r.label === '営業時間' || r.label === '商品入れ替え')!.value}` : ''}</p>
+              <span class="more">店舗情報 →</span>
+            </div>
+          </a>
+        ))}
+      </div>
+      <p class="center" style="margin-top:32px"><a class="btn" href="/bakery/">ベーカリー事業へ</a></p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap grid" style="grid-template-columns: 1fr 2fr; gap: 48px;">
+      <div>
+        <h2 class="section-title" style="text-align:left"><small>NEWS</small>お知らせ</h2>
+        <a class="btn btn-outline btn-sm" href="/news/">一覧を見る</a>
+      </div>
+      <ul class="news-list">
+        {news.map((n) => (
+          <li><a href={`/news/${n.id}/`}><time datetime={n.data.date.toISOString()}>{fmtDate(n.data.date)}</time><span class="tag">{n.data.category}</span><span>{n.data.title}</span></a></li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="wrap split">
+      <div>
+        <h2 class="section-title" style="text-align:left"><small>ABOUT</small>私たちについて</h2>
+        <p>2016年、システムエンジニアだった代表が「体に安全なものを使った飲食店をしたい」とパン屋を開業しました。2021年に会社を設立し、いまは飲食、システム開発、教育の3つの事業に取り組んでいます。</p>
+        <p><a class="btn" href="/about/">会社概要を見る</a></p>
+      </div>
+      <img src={img.aboutPhoto} alt={`${company.name}のスタッフ`} loading="lazy" />
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="wrap">
+      <h2>お問い合わせ</h2>
+      <p>プロデュース・システム開発・リスキリング講座のご相談は、お問い合わせフォームから承ります。</p>
+      <a class="btn btn-lg" href="/contact/">お問い合わせフォームへ</a>
+    </div>
+  </section>
+</Base>

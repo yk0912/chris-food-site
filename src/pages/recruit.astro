@@ -1,0 +1,15 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import ContactCta from '../components/ContactCta.astro';
+---
+<Base title="採用情報" description="クリスフードサービス合同会社の採用情報。">
+  <PageHero title="採用情報" eyebrow="RECRUIT" lead="一緒に働く仲間を探しています。" crumbs={[{ label: '採用情報' }]} />
+  <section class="section">
+    <div class="wrap narrow center">
+      <p>現在掲載している募集要項はありません。募集を開始した際は、このページでお知らせします。</p>
+      <p>ご興味をお持ちの方は、お問い合わせフォームよりお気軽にご連絡ください。</p>
+    </div>
+  </section>
+  <ContactCta type="recruit" title="採用についてのお問い合わせ" text="お問い合わせフォームの種別で「採用について」をお選びください。" />
+</Base>

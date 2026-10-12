@@ -1,0 +1,251 @@
+# Decap CMS 設定（管理画面 /admin/）
+# 公開前に repo を実際の GitHub リポジトリ（例: yuusuke/chris-food-site）に書き換えてください。
+backend:
+  name: github
+  repo: OWNER/REPO
+  branch: main
+  base_url: https://chrisbakery.jp        # OAuth 用 Cloudflare Pages Functions のあるドメイン
+  auth_endpoint: api/auth                  # functions/api/auth.js, callback.js
+
+locale: ja
+media_folder: public/uploads/misc
+public_folder: /uploads/misc
+site_url: https://chrisbakery.jp
+display_url: https://chrisbakery.jp
+publish_mode: simple
+
+collections:
+  # ---------------------------------------------------------------- 写真・基本設定
+  - name: site
+    label: サイト設定・会社情報・写真
+    files:
+      - name: settings
+        label: サイト全体の写真・会社情報・リンク
+        file: src/data/site.json
+        format: json
+        fields:
+          - label: 写真
+            name: images
+            widget: object
+            fields:
+              - { label: "クリスフードサービス ロゴ（ヘッダー用・横並び）", name: corpHorizontal, widget: image }
+              - { label: "クリスフードサービス ロゴ（マークのみ）", name: corpMark, widget: image }
+              - { label: "クリスフードサービス ロゴ（会社概要用・フル）", name: corpLogo, widget: image }
+              - { label: "トップ メインビジュアル", name: heroMain, widget: image }
+              - { label: "事業カード：飲食", name: heroFood, widget: image }
+              - { label: "事業カード：システム開発", name: heroSystem, widget: image }
+              - { label: "事業カード：教育", name: heroEducation, widget: image }
+              - { label: "ベーカリー メインビジュアル", name: bakeryHero, widget: image }
+              - { label: "クリスベーカリー ロゴ", name: bakeryLogo, widget: image }
+              - { label: "し～くんのサンドイッチ屋さん ロゴ", name: ckunLogo, widget: image }
+              - { label: "し～くん キャラクター", name: ckunCharacter, widget: image }
+              - { label: "代表者の写真", name: ceoPhoto, widget: image }
+              - { label: "会社概要・トップ「私たちについて」の写真", name: aboutPhoto, widget: image }
+              - { label: "プロデュース事業の写真", name: producePhoto, widget: image }
+              - { label: "システム開発事業の写真", name: systemPhoto, widget: image }
+              - { label: "リスキリング事業の写真", name: reskillingPhoto, widget: image }
+              - { label: "コンセプト：おはなし1", name: concept1, widget: image }
+              - { label: "コンセプト：おはなし2", name: concept2, widget: image }
+              - { label: "コンセプト：おはなし3", name: concept3, widget: image }
+              - { label: "コンセプト：おはなし4", name: concept4, widget: image }
+              - { label: "コンセプト：こだわり写真1", name: commitment1, widget: image }
+              - { label: "コンセプト：こだわり写真2", name: commitment2, widget: image }
+              - { label: "SNSシェア用画像（OGP）", name: ogImage, widget: image }
+          - label: 会社情報
+            name: company
+            widget: object
+            fields:
+              - { label: 商号, name: name, widget: string }
+              - { label: 英文名, name: nameEn, widget: string }
+              - { label: 代表者の肩書, name: ceoTitle, widget: string }
+              - { label: 代表者名, name: ceo, widget: string }
+              - { label: 創業, name: founded, widget: string }
+              - { label: 設立, name: established, widget: string }
+              - { label: 郵便番号, name: postal, widget: string }
+              - { label: 所在地, name: address, widget: string }
+              - { label: 電話番号, name: tel, widget: string }
+              - { label: 資本金（空欄なら非表示）, name: capital, widget: string, required: false }
+              - { label: 従業員数（空欄なら非表示）, name: employees, widget: string, required: false }
+              - { label: 事業内容, name: businesses, widget: list, field: { label: 事業, name: b, widget: string } }
+              - label: 沿革
+                name: history
+                widget: list
+                fields:
+                  - { label: 年月, name: date, widget: string }
+                  - { label: 出来事, name: text, widget: string }
+              - { label: 代表メッセージ（段落ごと）, name: message, widget: list, field: { label: 段落, name: p, widget: text } }
+          - label: リンク
+            name: links
+            widget: object
+            fields:
+              - { label: Instagram, name: instagram, widget: string }
+              - { label: Facebook, name: facebook, widget: string }
+              - { label: オンラインショップ, name: onlineshop, widget: string }
+          - label: お問い合わせフォーム
+            name: form
+            widget: object
+            fields:
+              - { label: "Formspree の送信先URL", name: endpoint, widget: string }
+
+  # ---------------------------------------------------------------- ベーカリー
+  - name: shops
+    label: ベーカリー店舗
+    files:
+      - name: shops
+        label: 店舗情報（写真・住所・営業時間）
+        file: src/data/shops.json
+        format: json
+        fields:
+          - label: 店舗
+            name: shops
+            widget: list
+            fields:
+              - { label: "URL用ID（変更しない）", name: slug, widget: string }
+              - { label: 店舗名, name: name, widget: string }
+              - { label: 種別, name: type, widget: string }
+              - { label: キャッチコピー, name: tagline, widget: string }
+              - { label: ロゴ, name: logo, widget: image }
+              - { label: メイン写真, name: photo, widget: image }
+              - { label: ギャラリー写真, name: gallery, widget: list, required: false, field: { label: 写真, name: g, widget: image } }
+              - { label: 郵便番号, name: postal, widget: string, required: false }
+              - { label: 住所, name: address, widget: string }
+              - { label: "地図の検索ワード", name: mapQuery, widget: string }
+              - { label: 電話番号, name: tel, widget: string }
+              - label: 営業時間・定休日などの情報
+                name: info
+                widget: list
+                fields:
+                  - { label: 項目名, name: label, widget: string }
+                  - { label: 内容, name: value, widget: string }
+              - { label: 紹介文, name: description, widget: text }
+              - { label: 注意書き, name: notes, widget: list, required: false, field: { label: 注意書き, name: n, widget: string } }
+  - name: menu
+    label: ベーカリー メニュー
+    files:
+      - name: menu
+        label: メニュー・お客様の声
+        file: src/data/menu.json
+        format: json
+        fields:
+          - { label: 冒頭文, name: intro, widget: text }
+          - label: カテゴリ
+            name: categories
+            widget: list
+            fields:
+              - { label: "ID（変更しない）", name: id, widget: string }
+              - { label: カテゴリ名, name: name, widget: string }
+              - { label: "取扱店舗のID（例: musashino）", name: shops, widget: list, field: { label: 店舗ID, name: s, widget: string } }
+              - { label: カテゴリの説明文, name: note, widget: text, required: false }
+              - label: 商品
+                name: items
+                widget: list
+                required: false
+                fields:
+                  - { label: 商品名, name: name, widget: string }
+                  - { label: 価格（空欄で「店頭でご確認」）, name: price, widget: string, required: false }
+                  - { label: 写真, name: image, widget: image }
+                  - { label: 説明, name: desc, widget: text }
+          - { label: お客様の声, name: voices, widget: list, field: { label: 声, name: v, widget: text } }
+
+  # ---------------------------------------------------------------- 各事業
+  - name: business
+    label: 事業ページ（プロデュース・システム開発）
+    files:
+      - name: business
+        label: プロデュース／システム開発の本文
+        file: src/data/business.json
+        format: json
+        fields:
+          - label: ベーカリープロデュース
+            name: produce
+            widget: object
+            fields:
+              - { label: リード文, name: lead, widget: text }
+              - label: 対応業態
+                name: targets
+                widget: list
+                fields: [{ label: 名称, name: name, widget: string }, { label: 説明, name: text, widget: string }]
+              - label: プラン
+                name: menus
+                widget: list
+                fields: [{ label: タイトル, name: title, widget: string }, { label: 説明, name: text, widget: text }]
+              - label: 流れ
+                name: flow
+                widget: list
+                fields: [{ label: タイトル, name: title, widget: string }, { label: 説明, name: text, widget: string }]
+              - label: よくある質問
+                name: faq
+                widget: list
+                fields: [{ label: 質問, name: q, widget: string }, { label: 回答, name: a, widget: text }]
+          - label: システム開発
+            name: system
+            widget: object
+            fields:
+              - { label: リード文, name: lead, widget: text }
+              - label: サービス
+                name: services
+                widget: list
+                fields: [{ label: タイトル, name: title, widget: string }, { label: 説明, name: text, widget: text }]
+              - label: 強み
+                name: strengths
+                widget: list
+                fields: [{ label: タイトル, name: title, widget: string }, { label: 説明, name: text, widget: text }]
+              - label: 流れ
+                name: flow
+                widget: list
+                fields: [{ label: タイトル, name: title, widget: string }, { label: 説明, name: text, widget: string }]
+              - label: よくある質問
+                name: faq
+                widget: list
+                fields: [{ label: 質問, name: q, widget: string }, { label: 回答, name: a, widget: text }]
+  - name: reskilling
+    label: リスキリング講座
+    files:
+      - name: reskilling
+        label: リスキリング講座ページ
+        file: src/data/reskilling.json
+        format: json
+        fields:
+          - { label: "掲載ステータス（preparing=準備中 / applying=申請中 / approved=対象講座）", name: status, widget: select, options: [preparing, applying, approved] }
+          - { label: リード文, name: lead, widget: text }
+          - { label: 助成金の名称, name: grantName, widget: string }
+          - { label: 助成金の説明, name: grantIntro, widget: list, field: { label: 段落, name: p, widget: text } }
+          - { label: 注意書き, name: notice, widget: text }
+          - { label: 対象, name: audience, widget: list, field: { label: 対象, name: a, widget: string } }
+          - label: 講座
+            name: courses
+            widget: list
+            fields:
+              - { label: 公開する, name: published, widget: boolean, default: false }
+              - { label: 講座名, name: title, widget: string }
+              - { label: 対象者, name: target, widget: string }
+              - { label: 到達目標, name: goal, widget: text }
+              - { label: カリキュラム, name: contents, widget: list, field: { label: 内容, name: c, widget: string } }
+              - { label: 時間数, name: hours, widget: string }
+              - { label: 受講形態, name: format, widget: string }
+              - { label: 受講料, name: price, widget: string }
+              - { label: 講師, name: instructor, widget: string }
+          - { label: 修了要件, name: completion, widget: list, field: { label: 要件, name: c, widget: string } }
+          - label: 申込の流れ
+            name: flow
+            widget: list
+            fields: [{ label: タイトル, name: title, widget: string }, { label: 説明, name: text, widget: string }]
+          - { label: キャンセル規定, name: cancel, widget: list, field: { label: 規定, name: c, widget: string } }
+          - label: よくある質問
+            name: faq
+            widget: list
+            fields: [{ label: 質問, name: q, widget: string }, { label: 回答, name: a, widget: text }]
+
+  # ---------------------------------------------------------------- お知らせ
+  - name: news
+    label: お知らせ
+    folder: src/content/news
+    create: true
+    extension: md
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: タイトル, name: title, widget: string }
+      - { label: 日付, name: date, widget: datetime, date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD" }
+      - { label: カテゴリ, name: category, widget: select, options: [全社, ベーカリー, プロデュース, システム開発, リスキリング], default: 全社 }
+      - { label: 画像, name: image, widget: image, required: false }
+      - { label: 本文, name: body, widget: markdown }

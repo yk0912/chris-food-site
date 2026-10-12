@@ -1,0 +1,41 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import { shops } from '../lib/data';
+---
+<Base title="サイトマップ" description="クリスフードサービス合同会社 サイトマップ。">
+  <PageHero title="サイトマップ" crumbs={[{ label: 'サイトマップ' }]} />
+  <section class="section">
+    <div class="wrap narrow">
+      <ul>
+        <li><a href="/">トップ</a></li>
+        <li><a href="/about/">会社概要</a></li>
+        <li><a href="/business/">事業紹介</a>
+          <ul>
+            <li><a href="/food/">飲食事業</a>
+              <ul>
+                <li><a href="/bakery/">ベーカリー事業</a>
+                  <ul>
+                    <li><a href="/bakery/concept/">コンセプト</a></li>
+                    <li><a href="/bakery/menu/">メニュー</a></li>
+                    <li><a href="/bakery/shops/">店舗一覧</a>
+                      <ul>{shops.map((s) => <li><a href={`/bakery/shops/${s.slug}/`}>{s.name}</a></li>)}</ul>
+                    </li>
+                  </ul>
+                </li>
+                <li><a href="/produce/">ベーカリープロデュース事業</a></li>
+              </ul>
+            </li>
+            <li><a href="/system/">システム開発事業（受託開発）</a></li>
+            <li><a href="/reskilling/">教育事業（リスキリング）</a></li>
+          </ul>
+        </li>
+        <li><a href="/news/">お知らせ</a></li>
+        <li><a href="/recruit/">採用情報</a></li>
+        <li><a href="/contact/">お問い合わせ</a></li>
+        <li><a href="/privacy/">個人情報保護方針</a></li>
+        <li><a href="/tokushoho/">特定商取引法に基づく表記</a></li>
+      </ul>
+    </div>
+  </section>
+</Base>

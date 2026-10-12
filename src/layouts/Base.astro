@@ -1,0 +1,85 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { company, img, shops } from '../lib/data';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  noindex?: boolean;
+}
+const { title, description = `${company.name}は、飲食事業（ベーカリー・ベーカリープロデュース）、システム開発事業、教育事業（リスキリング）を行う東京都武蔵野市の会社です。`, image = img.ogImage, noindex = false } = Astro.props;
+const fullTitle = title ? `${title}｜${company.name}` : company.name;
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const ogImage = new URL(image, Astro.site).href;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      name: company.name,
+      alternateName: company.nameEn,
+      url: 'https://chrisbakery.jp/',
+      logo: new URL(img.corpLogo, Astro.site).href,
+      foundingDate: '2021-09-09',
+      founder: { '@type': 'Person', name: company.ceo },
+      telephone: `+81-${company.tel.replace(/^0/, '')}`,
+      address: { '@type': 'PostalAddress', addressCountry: 'JP', addressRegion: '東京都', addressLocality: '武蔵野市', streetAddress: '緑町2-4-38 おおやまハイツ1階', postalCode: '180-0012' },
+    },
+    ...shops.map((s) => ({
+      '@type': 'Bakery',
+      name: s.name,
+      telephone: s.tel,
+      address: s.address,
+      url: `https://chrisbakery.jp/bakery/shops/${s.slug}/`,
+    })),
+  ],
+};
+---
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex" />}
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ja_JP" />
+    <meta property="og:site_name" content={company.name} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@400;500&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet" />
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </head>
+  <body>
+    <a class="skip" href="#main">本文へ移動</a>
+    <Header />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+    <script is:inline>
+      (function () {
+        var btn = document.querySelector('.menu-btn');
+        var nav = document.getElementById('gnav');
+        if (!btn || !nav) return;
+        btn.addEventListener('click', function () {
+          var open = nav.classList.toggle('is-open');
+          btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+      })();
+    </script>
+  </body>
+</html>

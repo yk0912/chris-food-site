@@ -1,0 +1,65 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import BakerySubNav from '../../components/BakerySubNav.astro';
+import { img, shops, menu, links } from '../../lib/data';
+const picks = menu.categories[0].items.slice(0, 3);
+---
+<Base title="ベーカリー事業｜クリスベーカリー" description="クリスベーカリーは、体と心にやさしい安心安全なパンのお店。武蔵野店、し～くんのサンドイッチ屋さん、成蹊大学11号館無人販売所の3店舗で営業しています。" image={img.bakeryHero}>
+  <PageHero theme="bakery" title="クリスベーカリー" eyebrow="BAKERY" lead="食べた人の数年後の体まで考えたパン。少しでも疑問を抱いた材料は使いません。" crumbs={[{ label: '事業紹介', href: '/business/' }, { label: '飲食事業', href: '/food/' }, { label: 'ベーカリー事業' }]} image={img.bakeryHero} />
+  <BakerySubNav />
+  <div class="bakery-theme">
+    <section class="section">
+      <div class="wrap split">
+        <div>
+          <h2 class="section-title" style="text-align:left"><small>CONCEPT</small>体にやさしい、安心のパン</h2>
+          <p>システムエンジニアとして働いていたオーナーが、<span class="marker">「体に安全なものをつかった飲食店をしたい」</span>と選んだのは、子どもからシニアまで幅広く食べられる食パンを主力にしたパン屋でした。</p>
+          <p>ショートニング、マーガリン、白砂糖は不使用。食品添加物の少ない材料を選び、独自の製法でやわらかさと日持ちを両立しています。</p>
+          <p><a class="btn" href="/bakery/concept/">コンセプトを見る</a></p>
+        </div>
+        <img src={img.concept1} alt="パン作りをするオーナー" loading="lazy" />
+      </div>
+    </section>
+
+    <section class="section alt">
+      <div class="wrap">
+        <h2 class="section-title"><small>MENU</small>人気の食パン</h2>
+        <div class="menu-grid">
+          {picks.map((i) => (
+            <div class="menu-item"><img src={i.image} alt={i.name} loading="lazy" /><div class="body"><h4>{i.name}</h4>{i.price && <p class="price">{i.price}</p>}<p class="desc">{i.desc}</p></div></div>
+          ))}
+        </div>
+        <p class="center" style="margin-top:28px"><a class="btn" href="/bakery/menu/">メニューをすべて見る</a></p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <h2 class="section-title"><small>SHOPS</small>3つの店舗</h2>
+        <div class="grid grid-3">
+          {shops.map((s) => (
+            <a class="card shop-card" href={`/bakery/shops/${s.slug}/`}>
+              <img class="logo" src={s.logo} alt="" loading="lazy" />
+              <div class="body">
+                <span class="tag">{s.type}</span>
+                <h3>{s.name}</h3>
+                <p>{s.tagline}</p>
+                <span class="more">店舗情報を見る →</span>
+              </div>
+            </a>
+          ))}
+        </div>
+        <p class="center" style="margin-top:28px"><a class="btn btn-outline" href="/bakery/shops/">店舗一覧・アクセス</a></p>
+      </div>
+    </section>
+
+    <section class="section alt">
+      <div class="wrap center narrow">
+        <h2 class="section-title"><small>ONLINE SHOP</small>オンラインショップ</h2>
+        <p>おうちにいながら、クリスベーカリーのパンをお楽しみいただけます。</p>
+        <p><a class="btn btn-lg" href={links.onlineshop} target="_blank" rel="noopener">オンラインショップへ</a></p>
+        <p style="margin-top:24px"><a href={links.instagram} target="_blank" rel="noopener">Instagram</a>　／　<a href={links.facebook} target="_blank" rel="noopener">Facebook</a></p>
+      </div>
+    </section>
+  </div>
+</Base>

@@ -1,0 +1,23 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import { getCollection, render } from 'astro:content';
+import { fmtDate } from '../../lib/data';
+
+export async function getStaticPaths() {
+  const news = await getCollection('news');
+  return news.map((entry) => ({ params: { id: entry.id }, props: { entry } }));
+}
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+<Base title={entry.data.title} description={entry.data.title} image={entry.data.image}>
+  <PageHero title={entry.data.title} eyebrow={`${fmtDate(entry.data.date)}　${entry.data.category}`} crumbs={[{ label: 'お知らせ', href: '/news/' }, { label: entry.data.title }]} />
+  <section class="section">
+    <div class="wrap article">
+      {entry.data.image && <img src={entry.data.image} alt="" style="border-radius:14px;margin-bottom:24px" />}
+      <Content />
+      <p style="margin-top:40px"><a href="/news/">← お知らせ一覧へ</a></p>
+    </div>
+  </section>
+</Base>

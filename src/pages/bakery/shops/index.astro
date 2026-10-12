@@ -1,0 +1,32 @@
+---
+import Base from '../../../layouts/Base.astro';
+import PageHero from '../../../components/PageHero.astro';
+import BakerySubNav from '../../../components/BakerySubNav.astro';
+import { shops, mapLink } from '../../../lib/data';
+---
+<Base title="店舗一覧｜クリスベーカリー" description="クリスベーカリーの店舗一覧。クリスベーカリー武蔵野店、し～くんのサンドイッチ屋さん、クリスベーカリー成蹊大学11号館無人販売所の住所・営業時間をご案内します。">
+  <PageHero theme="bakery" title="店舗一覧" eyebrow="SHOPS" lead="クリスベーカリーは、3つの店舗で営業しています。" crumbs={[{ label: 'ベーカリー事業', href: '/bakery/' }, { label: '店舗一覧' }]} />
+  <BakerySubNav />
+  <div class="bakery-theme">
+    <section class="section">
+      <div class="wrap">
+        <div class="grid grid-3">
+          {shops.map((s) => (
+            <article class="card shop-card">
+              <img class="thumb" src={s.photo} alt={s.name} loading="lazy" />
+              <div class="body">
+                <span class="tag">{s.type}</span>
+                <h2 style="font-size:1.2rem"><a href={`/bakery/shops/${s.slug}/`} style="text-decoration:none;color:inherit">{s.name}</a></h2>
+                <p>{s.address}<br />TEL {s.tel}</p>
+                <ul style="margin:0 0 12px;padding-left:1.1em;font-size:.9rem">
+                  {s.info.slice(0, 3).map((r) => <li>{r.label}：{r.value}</li>)}
+                </ul>
+                <p style="margin:0"><a class="more" href={`/bakery/shops/${s.slug}/`}>詳しく見る →</a>　<a href={mapLink(s.mapQuery)} target="_blank" rel="noopener" style="font-size:.9rem">地図</a></p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  </div>
+</Base>

@@ -1,0 +1,46 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import BakerySubNav from '../../components/BakerySubNav.astro';
+import { menu, shopBySlug } from '../../lib/data';
+---
+<Base title="メニュー｜クリスベーカリー" description="クリスベーカリーのメニュー。食パン、ロールパン、菓子パン、ベーグル、サンドイッチをご紹介します。">
+  <PageHero theme="bakery" title="メニュー" eyebrow="MENU" lead={menu.intro} crumbs={[{ label: 'ベーカリー事業', href: '/bakery/' }, { label: 'メニュー' }]} />
+  <BakerySubNav />
+  <div class="bakery-theme">
+    <section class="section">
+      <div class="wrap">
+        <div class="cat-nav">{menu.categories.map((c) => <a href={`#${c.id}`}>{c.name}</a>)}</div>
+        {menu.categories.map((c) => (
+          <section id={c.id}>
+            <h2 class="cat-title">{c.name}</h2>
+            <p class="avail">取扱店舗：{c.shops.map((s) => shopBySlug(s)?.name).filter(Boolean).join('、')}</p>
+            {c.note && <p>{c.note}</p>}
+            {c.items.length > 0 && (
+              <div class="menu-grid">
+                {c.items.map((i) => (
+                  <div class="menu-item">
+                    <img src={i.image} alt={i.name} loading="lazy" />
+                    <div class="body">
+                      <h4>{i.name}</h4>
+                      <p class="price">{i.price || '価格は店頭でご確認ください'}</p>
+                      <p class="desc">{i.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </section>
+        ))}
+        <p class="notes" style="margin-top:32px">※商品・価格は変更になる場合があります。店舗によって取扱いが異なります。季節限定商品もございます。</p>
+      </div>
+    </section>
+
+    <section class="section alt">
+      <div class="wrap">
+        <h2 class="section-title"><small>VOICE</small>お客様の声</h2>
+        <div class="voices">{menu.voices.map((v) => <div class="voice">{v}</div>)}</div>
+      </div>
+    </section>
+  </div>
+</Base>

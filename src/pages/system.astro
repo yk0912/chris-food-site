@@ -1,0 +1,44 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import ContactCta from '../components/ContactCta.astro';
+import { business, img } from '../lib/data';
+const s = business.system;
+---
+<Base title="システム開発事業（受託開発）" description="クリスフードサービスのシステム開発事業。業務システム・Webシステムの受託開発、既存システムの改修・保守を承ります。" image={img.systemPhoto}>
+  <PageHero title="システム開発事業" eyebrow="SYSTEM DEVELOPMENT" lead={s.lead} crumbs={[{ label: '事業紹介', href: '/business/' }, { label: 'システム開発事業（受託開発）' }]} />
+
+  <section class="section">
+    <div class="wrap">
+      <h2 class="section-title"><small>SERVICE</small>受託開発サービス</h2>
+      <div class="grid grid-2">
+        {s.services.map((x) => <div class="plain-card"><h3>{x.title}</h3><p>{x.text}</p></div>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="wrap">
+      <h2 class="section-title"><small>STRENGTH</small>選ばれる理由</h2>
+      <div class="grid grid-3">
+        {s.strengths.map((x) => <div class="plain-card"><h3>{x.title}</h3><p>{x.text}</p></div>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap narrow">
+      <h2 class="section-title"><small>FLOW</small>開発の流れ</h2>
+      <ol class="steps">{s.flow.map((x) => <li><strong>{x.title}</strong><span>{x.text}</span></li>)}</ol>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="wrap narrow faq">
+      <h2 class="section-title"><small>FAQ</small>よくあるご質問</h2>
+      {s.faq.map((f) => <details><summary>{f.q}</summary><p>{f.a}</p></details>)}
+    </div>
+  </section>
+
+  <ContactCta type="system" title="システム開発のご相談" text="課題や要望を整理するところからお手伝いします。概算のお見積りは無料です。" />
+</Base>

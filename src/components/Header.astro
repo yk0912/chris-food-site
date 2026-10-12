@@ -1,0 +1,33 @@
+---
+import { company, links, img } from '../lib/data';
+const path = Astro.url.pathname;
+const is = (p: string) => (p === '/' ? path === '/' : path.startsWith(p));
+---
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="/" aria-label={`${company.name} トップへ`}>
+      <img class="brand-logo" src={img.corpHorizontal} alt={company.name} width="200" height="55" />    </a>
+    <button class="menu-btn" aria-label="メニューを開く" aria-expanded="false" aria-controls="gnav">
+      <span></span><span></span><span></span>
+    </button>
+    <nav id="gnav" class="gnav" aria-label="メインメニュー">
+      <ul>
+        <li class="has-sub">
+          <a href="/business/" aria-current={is('/business') || is('/food') || is('/bakery') || is('/produce') || is('/system') || is('/reskilling') ? 'page' : undefined}>事業紹介</a>
+          <ul class="sub">
+            <li><a href="/food/">飲食事業</a></li>
+            <li><a href="/bakery/">　└ ベーカリー事業</a></li>
+            <li><a href="/produce/">　└ ベーカリープロデュース事業</a></li>
+            <li><a href="/system/">システム開発事業</a></li>
+            <li><a href="/reskilling/">教育事業（リスキリング）</a></li>
+          </ul>
+        </li>
+        <li><a href="/about/" aria-current={is('/about') ? 'page' : undefined}>会社概要</a></li>
+        <li><a href="/news/" aria-current={is('/news') ? 'page' : undefined}>お知らせ</a></li>
+        <li><a href="/recruit/" aria-current={is('/recruit') ? 'page' : undefined}>採用情報</a></li>
+        <li><a class="btn btn-sm" href="/contact/">お問い合わせ</a></li>
+        <li><a class="btn btn-sm btn-outline" href={links.onlineshop} target="_blank" rel="noopener">オンラインショップ</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>

@@ -1,0 +1,88 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import ContactCta from '../components/ContactCta.astro';
+import { reskilling as r, company, img } from '../lib/data';
+
+const courses = r.courses.filter((c) => c.published || import.meta.env.DEV);
+const statusLabel = (r.statusLabels as Record<string, string>)[r.status];
+---
+<Base title="教育事業（リスキリング）" description={`${r.grantName}の活用をめざす企業向けリスキリング講座のご案内。講座内容・修了要件・申込の流れ・キャンセル規定を掲載しています。`} image={img.reskillingPhoto}>
+  <PageHero title="リスキリング講座" eyebrow="RESKILLING" lead={r.lead} crumbs={[{ label: '事業紹介', href: '/business/' }, { label: '教育事業（リスキリング）' }]} />
+
+  <section class="section">
+    <div class="wrap narrow">
+      <p class="status-banner">{statusLabel}</p>
+
+      <h2 class="section-title"><small>GRANT</small>活用をめざす助成金制度</h2>
+      <h3 class="center">{r.grantName}</h3>
+      {r.grantIntro.map((t) => <p>{t}</p>)}
+      <p class="notice">{r.notice}</p>
+
+      <h2 class="section-title" style="margin-top:64px"><small>TARGET</small>こんな企業・事業主様に</h2>
+      <ul>{r.audience.map((a) => <li>{a}</li>)}</ul>
+    </div>
+  </section>
+
+  <section class="section alt" id="courses">
+    <div class="wrap">
+      <h2 class="section-title"><small>COURSES</small>講座一覧</h2>
+      {courses.length === 0 && <p class="center">講座の詳細は準備中です。公開までしばらくお待ちください。<br />講座のご要望は<a href="/contact/?type=reskilling">お問い合わせフォーム</a>よりお寄せください。</p>}
+      <div class="grid" style="gap:28px">
+        {courses.map((c) => (
+          <article class="plain-card">
+            <h3>{c.title}{!c.published && <span class="draft-badge">サンプル（公開されません）</span>}</h3>
+            <div class="info-table-wrap" style="margin-top:12px">
+              <table class="info-table"><tbody>
+                <tr><th>対象者</th><td>{c.target}</td></tr>
+                <tr><th>到達目標</th><td>{c.goal}</td></tr>
+                <tr><th>カリキュラム</th><td><ul style="margin:0;padding-left:1.1em">{c.contents.map((x) => <li>{x}</li>)}</ul></td></tr>
+                <tr><th>時間数</th><td>{c.hours}</td></tr>
+                <tr><th>受講形態</th><td>{c.format}</td></tr>
+                <tr><th>受講料</th><td>{c.price}</td></tr>
+                <tr><th>講師</th><td>{c.instructor}</td></tr>
+              </tbody></table>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap narrow">
+      <h2 class="section-title"><small>FLOW</small>お申込みから修了までの流れ</h2>
+      <ol class="steps">{r.flow.map((s) => <li><strong>{s.title}</strong><span>{s.text}</span></li>)}</ol>
+
+      <h2 class="section-title" style="margin-top:64px"><small>COMPLETION</small>修了要件</h2>
+      <ul>{r.completion.map((x) => <li>{x}</li>)}</ul>
+
+      <h2 class="section-title" style="margin-top:64px"><small>CANCEL</small>キャンセル・返金について</h2>
+      <ul>{r.cancel.map((x) => <li>{x}</li>)}</ul>
+      <p class="notes">特定商取引法に基づく表記は<a href="/tokushoho/">こちら</a>をご確認ください。</p>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="wrap narrow">
+      <h2 class="section-title"><small>PROVIDER</small>運営者情報</h2>
+      <div class="info-table-wrap"><table class="info-table"><tbody>
+        <tr><th>運営会社</th><td>{company.name}</td></tr>
+        <tr><th>代表社員</th><td>{company.ceo}</td></tr>
+        <tr><th>所在地</th><td>{company.postal} {company.address}</td></tr>
+        <tr><th>電話番号</th><td>{company.tel}</td></tr>
+        <tr><th>設立</th><td>{company.established}</td></tr>
+      </tbody></table></div>
+      <p class="center" style="margin-top:12px"><a href="/about/">会社概要を見る</a></p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap narrow faq">
+      <h2 class="section-title"><small>FAQ</small>よくあるご質問</h2>
+      {r.faq.map((f) => <details><summary>{f.q}</summary><p>{f.a}</p></details>)}
+    </div>
+  </section>
+
+  <ContactCta type="reskilling" title="講座のお申込み・ご相談" text="助成金の対象となるかどうかのご相談や、講座のお見積りも承ります。" />
+</Base>
