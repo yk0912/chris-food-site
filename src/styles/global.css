@@ -182,6 +182,19 @@ a.card:hover { transform: translateY(-4px); }
 .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-top: 24px; }
 .gallery img { border-radius: 10px; width: 100%; aspect-ratio: 4/3; object-fit: cover; }
 
+/* recruit */
+.recruit-main { text-align: center; background: var(--brand-soft); border: 2px solid var(--brand); border-radius: var(--radius); padding: 36px 24px; }
+.recruit-main h2 { color: var(--navy); font-size: 1.4rem; }
+.job-group { margin-bottom: 32px; }
+.job-group h3 { font-size: 1.15rem; color: var(--navy); border-left: 6px solid var(--brand); padding-left: .6em; margin-bottom: 14px; }
+.job-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+.job { display: flex; justify-content: space-between; align-items: center; gap: 16px; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 16px 20px; }
+.job-info { display: flex; flex-direction: column; gap: 4px; align-items: flex-start; }
+.job-info .tag { margin: 0; }
+.job-place { color: var(--ink-soft); font-size: .9rem; }
+.job .btn { white-space: nowrap; }
+@media (max-width: 640px) { .job { flex-direction: column; align-items: stretch; } .job .btn { text-align: center; } }
+
 /* reskilling */
 .level-steps { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; padding: 0; margin: 28px 0 40px; counter-reset: lv; }
 .level-steps li { background: #fff; border: 1px solid var(--line); border-top: 4px solid var(--brand); border-radius: var(--radius); padding: 16px 18px; text-align: center; }

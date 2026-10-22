@@ -275,6 +275,38 @@ collections:
             widget: list
             fields: [{ label: 質問, name: q, widget: string }, { label: 回答, name: a, widget: text }]
 
+  # ---------------------------------------------------------------- 採用情報
+  - name: recruit
+    label: 採用情報
+    files:
+      - name: recruit
+        label: 採用情報（求人リンク）
+        file: src/data/recruit.json
+        format: json
+        fields:
+          - { label: リード文（求人があるときに表示）, name: lead, widget: text }
+          - label: 採用サイト（Airワークなど）
+            name: airwork
+            widget: object
+            fields:
+              - { label: 見出し, name: title, widget: string }
+              - { label: 説明, name: text, widget: text }
+              - { label: "URL（空欄ならボタンを非表示）", name: url, widget: string, required: false }
+          - label: 求人グループ（パート・アルバイト／正社員 など）
+            name: groups
+            widget: list
+            fields:
+              - { label: グループ名, name: name, widget: string }
+              - label: 求人（すべて削除すると、グループごと非表示）
+                name: jobs
+                widget: list
+                required: false
+                fields:
+                  - { label: 職種名, name: title, widget: string }
+                  - { label: 雇用形態, name: type, widget: string }
+                  - { label: 勤務地（空欄なら非表示）, name: place, widget: string, required: false }
+                  - { label: "求人ページのURL（Indeedなど）", name: url, widget: string }
+
   # ---------------------------------------------------------------- お知らせ
   - name: news
     label: お知らせ
