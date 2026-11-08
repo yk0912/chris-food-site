@@ -182,6 +182,15 @@ a.card:hover { transform: translateY(-4px); }
 .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-top: 24px; }
 .gallery img { border-radius: 10px; width: 100%; aspect-ratio: 4/3; object-fit: cover; }
 
+/* ceo profile (会社概要) */
+.ceo-profile { margin-top: 48px; padding: 24px 28px; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); font-size: .92rem; }
+.ceo-profile h3 { font-size: 1rem; color: var(--navy); letter-spacing: .1em; border-bottom: 2px solid var(--brand); display: inline-block; padding-bottom: .2em; margin-bottom: .8em; }
+.ceo-profile-summary { color: var(--ink); line-height: 1.9; margin-bottom: 1.2em; }
+.ceo-profile-list { display: grid; grid-template-columns: 5em 1fr; gap: .5em 1em; margin: 0; color: var(--ink-soft); }
+.ceo-profile-list dt { font-weight: 700; color: var(--navy); }
+.ceo-profile-list dd { margin: 0; }
+@media (max-width: 640px) { .ceo-profile { padding: 20px 18px; } .ceo-profile-list { grid-template-columns: 1fr; gap: 0; } .ceo-profile-list dd { margin-bottom: .7em; } }
+
 /* philosophy (会社概要) */
 .philosophy { text-align: center; }
 .philosophy-lead { font-size: clamp(1.25rem, 3.2vw, 1.7rem); font-weight: 700; color: var(--navy); line-height: 1.6; margin-bottom: 1.2em; }

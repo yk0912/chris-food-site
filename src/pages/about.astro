@@ -54,6 +54,15 @@ const q = '東京都武蔵野市緑町2-4-38 おおやまハイツ';
         <p style="text-align:right"><strong>{company.ceoTitle}　{company.ceo}</strong></p>
       </div>
     </div>
+    {company.ceoProfile && (
+      <div class="wrap narrow ceo-profile">
+        <h3>{company.ceoProfile.title}</h3>
+        <p class="ceo-profile-summary">{company.ceoProfile.summary}</p>
+        <dl class="ceo-profile-list">
+          {company.ceoProfile.items.map((i) => <><dt>{i.date}</dt><dd>{i.text}</dd></>)}
+        </dl>
+      </div>
+    )}
   </section>
 
   <section class="section">
