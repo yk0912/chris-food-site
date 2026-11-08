@@ -1,7 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import { getCollection } from 'astro:content';
-import { company, img, shops, fmtDate } from '../lib/data';
+import { site, company, img, shops, fmtDate } from '../lib/data';
 
 const news = (await getCollection('news')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()).slice(0, 3);
 const businesses = [
@@ -14,8 +14,8 @@ const businesses = [
   <section class="top-hero" style={`--hero:url('${img.heroMain}')`}>
     <div class="bg"></div>
     <div class="wrap">
-      <h1>食と、技術と、学びで。<br />暮らしと仕事に、安心を。</h1>
-      <p>クリスフードサービスは、東京・武蔵野市でパン屋「クリスベーカリー」を営みながら、システム開発と人材育成にも取り組む会社です。</p>
+      <h1>{site.hero.headline.split('\n').map((l, i) => <>{i > 0 && <br />}{l}</>)}</h1>
+      <p>{site.hero.lead.split('\n').map((l, i) => <>{i > 0 && <br />}{l}</>)}</p>
       <div class="btns">
         <a class="btn" href="/business/">事業紹介を見る</a>
         <a class="btn btn-outline" href="/about/">会社概要</a>

@@ -51,10 +51,23 @@ collections:
               - { label: "コンセプト：こだわり写真1", name: commitment1, widget: image }
               - { label: "コンセプト：こだわり写真2", name: commitment2, widget: image }
               - { label: "SNSシェア用画像（OGP）", name: ogImage, widget: image }
+          - label: トップページの見出し
+            name: hero
+            widget: object
+            fields:
+              - { label: "見出し（改行で2行にする）", name: headline, widget: text }
+              - { label: "見出しの下の説明文（改行で2行にする）", name: lead, widget: text }
           - label: 会社情報
             name: company
             widget: object
             fields:
+              - label: 経営理念（会社概要ページ）
+                name: philosophy
+                widget: object
+                required: false
+                fields:
+                  - { label: 理念の一文（大きく表示）, name: title, widget: string }
+                  - { label: 本文（段落ごと）, name: body, widget: list, field: { label: 段落, name: p, widget: text } }
               - { label: 商号, name: name, widget: string }
               - { label: 英文名, name: nameEn, widget: string }
               - { label: 代表者の肩書, name: ceoTitle, widget: string }

@@ -20,6 +20,16 @@ const q = '東京都武蔵野市緑町2-4-38 おおやまハイツ';
 <Base title="会社概要" description={`${company.name}の会社概要。商号、設立、代表者、所在地、事業内容、沿革をご案内します。`}>
   <PageHero title="会社概要" eyebrow="COMPANY" crumbs={[{ label: '会社概要' }]} />
 
+  {company.philosophy && (
+    <section class="section alt philosophy">
+      <div class="wrap narrow">
+        <h2 class="section-title"><small>PHILOSOPHY</small>経営理念</h2>
+        <p class="philosophy-lead">{company.philosophy.title}</p>
+        {company.philosophy.body.map((p) => <p>{p}</p>)}
+      </div>
+    </section>
+  )}
+
   <section class="section">
     <div class="wrap narrow">
       <img src={img.corpLogo} alt={company.name} width="260" style="margin:0 auto 32px;width:260px" />
