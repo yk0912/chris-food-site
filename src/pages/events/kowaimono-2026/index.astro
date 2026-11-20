@@ -1,0 +1,255 @@
+---
+// 怪談イベント「怖いものみたさ」参加者向けクーポンLP（単独ページ）
+// 既存サイトの共通ヘッダー・フッター(Base.astro)は使わず、このページだけで完結させる。
+// 店舗情報・商品・価格は公式データ(src/data)から読み込むため、公式ページの更新に追従する。
+import { shopBySlug, menu, mapLink } from '../../../lib/data';
+
+const shop = shopBySlug('ckun-sandwich')!;
+const sandwiches = menu.categories.find((c) => c.id === 'sandwich')?.items ?? [];
+
+// お客様向けの数字は全角で表示する
+const zen = (s: string) =>
+  s.replace(/[0-9]/g, (d) => String.fromCharCode(d.charCodeAt(0) + 0xfee0)).replace(/:/g, '：').replace(/~/g, '〜');
+const info = (label: string) => zen(shop.info.find((r: any) => r.label === label)?.value ?? '');
+
+const URL_ = 'https://chrisbakery.jp/events/kowaimono-2026/';
+const TITLE = '怖いものみたさ参加者限定クーポン｜し～くんのサンドイッチ屋さん';
+const DESC = '怪談イベント「怖いものみたさ」参加者限定。し～くんのサンドイッチ屋さん（ミッテン府中１階）で使える、お好きなサンドイッチ１点２０％OFFクーポン。';
+const OG_IMAGE = 'https://chrisbakery.jp/uploads/shops/sandwich.jpg';
+---
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex,nofollow" />
+    <meta name="theme-color" content="#fffaf0" />
+    <title>{TITLE}</title>
+    <meta name="description" content={DESC} />
+    <link rel="canonical" href={URL_} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ja_JP" />
+    <meta property="og:title" content={TITLE} />
+    <meta property="og:description" content={DESC} />
+    <meta property="og:url" content={URL_} />
+    <meta property="og:image" content={OG_IMAGE} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800&display=swap" rel="stylesheet" />
+    <style is:global>
+      :root{--ink:#283b37;--green:#416c5b;--green-d:#2f5446;--cream:#fffaf0;--paper:#fffdf7;--sand:#f2e9da;--gold:#bd9650;--red:#b4463d;--line:#e6dbc6}
+      *{box-sizing:border-box}
+      html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+      body{margin:0;background:var(--cream);color:var(--ink);font-family:"Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;line-height:1.8;font-size:15px}
+      img{max-width:100%;display:block}
+      a{color:inherit}
+      .lp{overflow-x:hidden}
+      .eyebrow{font-size:11px;letter-spacing:.18em;font-weight:700;color:var(--gold);margin:0 0 10px}
+      .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 26px;border-radius:999px;background:var(--green);color:#fff;text-decoration:none;font-weight:700;font-size:15px;border:0;cursor:pointer}
+      .btn:hover{background:var(--green-d)}
+      .btn.outline{background:#fff;color:var(--green);border:2px solid var(--green)}
+      .btn.outline:hover{background:var(--green);color:#fff}
+
+      /* ヒーロー */
+      .hero{max-width:1040px;margin:0 auto;padding:34px 20px 40px;display:grid;gap:24px}
+      .hero h1{font-size:clamp(26px,7.4vw,42px);line-height:1.45;letter-spacing:.03em;margin:0 0 12px}
+      .hero .intro{margin:0 0 16px;font-size:15px}
+      .chip{display:inline-block;background:#fff;border:1px solid var(--line);border-radius:999px;padding:4px 16px;font-size:13px;font-weight:700;margin:0 0 20px}
+      .chip b{color:var(--red)}
+      .photo{position:relative;border-radius:120px 120px 14px 14px;overflow:hidden;background:#e8e1d3;aspect-ratio:4/3.1;box-shadow:0 10px 28px #4a3b201f}
+      .photo img{width:100%;height:100%;object-fit:cover}
+      .photo-note{position:absolute;left:12px;bottom:12px;background:#fffdf3ee;padding:4px 12px;border-radius:999px;font-size:12px}
+      .ghost{width:64px;height:auto;filter:drop-shadow(0 2px 3px #4a3b2040)}
+      .hero .ghost{position:absolute;right:10px;bottom:-6px;z-index:2}
+      .hero .photo-wrap{position:relative}
+
+      /* クーポン */
+      .coupon{background:var(--sand);padding:44px 20px 48px;border-top:1px solid #e8ddca;border-bottom:1px solid #e8ddca}
+      .coupon-in{max-width:620px;margin:0 auto;text-align:center}
+      .coupon h2{font-size:15px;letter-spacing:.12em;margin:0 0 14px}
+      .ticket{position:relative;background:var(--paper);border:2px solid var(--gold);border-radius:18px;padding:26px 18px 20px}
+      .ticket .ghost{position:absolute;right:10px;top:-34px;width:52px}
+      .tag{display:inline-block;background:var(--red);color:#fff;font-weight:700;font-size:12px;letter-spacing:.1em;padding:3px 14px;border-radius:999px;margin-bottom:10px}
+      .offer{font-size:18px;font-weight:700;line-height:1.7}
+      .offer strong{display:block;font-size:clamp(46px,14vw,64px);line-height:1.15;color:var(--red);letter-spacing:.02em;white-space:nowrap}
+      .state{margin:14px 0 4px;padding:10px 14px;border-radius:10px;font-weight:700;font-size:15px;background:#eef4ee;color:var(--green-d)}
+      .today{margin:0 0 4px;font-size:12px;color:#6c6a60}
+      .terms{margin:14px 0 0;text-align:left;font-size:13px}
+      .terms div{display:grid;grid-template-columns:82px 1fr;gap:10px;border-top:1px dashed #d9cbb4;padding:9px 0}
+      .terms dt{color:#6b5a3f;font-weight:700}
+      .terms dd{margin:0}
+      .nb{white-space:nowrap}
+      /* 利用期間の前・後 */
+      .coupon[data-state="before"] .state{background:#f6efdc;color:#7a5a24}
+      .coupon[data-state="before"] .ticket{opacity:.92}
+      .coupon[data-state="closed"] .state{background:#ece8e1;color:#6a6258}
+      .coupon[data-state="closed"] .ticket{filter:grayscale(.85);opacity:.75}
+      .coupon[data-state="closed"] .ticket::after{content:"終了";position:absolute;right:16px;top:16px;transform:rotate(8deg);border:3px solid #8f473d;color:#8f473d;font-weight:800;font-size:22px;letter-spacing:.1em;padding:0 14px;border-radius:6px;background:#fffdf7cc}
+      .today[hidden]{display:none}
+
+      /* おすすめ商品 */
+      .products{max-width:960px;margin:0 auto;padding:54px 20px 20px;text-align:center}
+      .products h2,.access h2{font-size:23px;line-height:1.5;margin:0 0 10px}
+      .products>p.lead{max-width:560px;margin:0 auto 22px;font-size:14px}
+      .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;text-align:left}
+      .card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px 12px 16px;text-align:center}
+      .card img{width:112px;height:112px;object-fit:contain;margin:0 auto 6px}
+      .card h3{font-size:15px;margin:0 0 2px}
+      .card .price{margin:0 0 4px;color:var(--red);font-weight:800;font-size:15px}
+      .card p.desc{margin:0;font-size:11.5px;line-height:1.65;color:#5d6660;text-align:left}
+      .note-small{font-size:11px;color:#7a746a;margin:14px 0 0}
+
+      /* アクセス */
+      .access{max-width:880px;margin:0 auto;padding:44px 20px 52px;text-align:center}
+      .acard{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px 18px;text-align:left;margin-top:12px}
+      .acard h3{font-size:18px;margin:0}
+      .acard .floor{margin:0 0 10px;color:var(--green);font-weight:700;font-size:14px}
+      .acard dl{display:grid;grid-template-columns:74px 1fr;gap:6px 10px;margin:12px 0;font-size:14px}
+      .acard dt{color:#86795f}
+      .acard dd{margin:0}
+      .acard .small{font-size:11.5px;color:#716c63;margin:6px 0 14px}
+      .acard .btn{width:100%}
+      .gallery-one{margin-top:14px;border-radius:12px;overflow:hidden;aspect-ratio:16/9}
+      .gallery-one img{width:100%;height:100%;object-fit:cover}
+
+      /* メルマガ・クレジット */
+      .mail{text-align:center;background:#fff;border-top:1px solid var(--line);padding:22px 20px;font-size:13px}
+      .mail p{margin:0 0 4px}
+      .mail a{color:var(--green);font-weight:700}
+      .mail small{display:block;color:#746f67;font-size:11px;margin-top:4px}
+      .credit{text-align:center;font-size:11px;color:#8a8478;margin:0;padding:14px 20px 28px;background:#fff}
+
+      @media(min-width:760px){
+        body{font-size:16px}
+        .hero{grid-template-columns:1.05fr 1fr;align-items:center;gap:44px;padding:64px 28px 70px}
+        .photo{aspect-ratio:1/1.05;border-radius:180px 180px 16px 16px}
+        .coupon{padding:60px 20px 64px}
+        .ticket{padding:34px 34px 26px}
+        .grid{grid-template-columns:repeat(4,1fr);gap:16px}
+        .card img{width:128px;height:128px}
+        .acard{display:grid;grid-template-columns:1fr 1fr;gap:28px;padding:28px}
+        .gallery-one{margin-top:0;aspect-ratio:auto;min-height:220px}
+      }
+    </style>
+  </head>
+  <body>
+    <div class="lp">
+      <!-- ヒーロー -->
+      <section class="hero">
+        <div>
+          <p class="eyebrow">EVENT GUEST COUPON</p>
+          <h1>「怖いものみたさ」に<br />ご参加の皆さまへ</h1>
+          <p class="intro">イベントのあとは、クリスベーカリーの食パンで作る、できたてサンドイッチはいかがですか。参加者限定のクーポンをご用意しました。</p>
+          <p class="chip">イベント日：<b>２０２６年１２月１１日（金）</b></p><br />
+          <a class="btn" href="#coupon">クーポンを見る <span aria-hidden="true">↓</span></a>
+        </div>
+        <div class="photo-wrap">
+          <div class="photo">
+            <img src="/uploads/shops/sandwich.jpg" alt="し～くんのサンドイッチ屋さんのサンドイッチ" width="1600" height="1200" fetchpriority="high" />
+            <span class="photo-note">府中のサンドイッチ専門店</span>
+          </div>
+          <img class="ghost" src="/events/kowaimono-2026/assets/event-ghost.png" alt="" aria-hidden="true" width="240" height="219" />
+        </div>
+      </section>
+
+      <!-- クーポン -->
+      <section class="coupon" id="coupon" data-state="active">
+        <div class="coupon-in">
+          <p class="eyebrow">KOWAIMONOMITASA SPECIAL</p>
+          <h2>イベント参加者限定クーポン</h2>
+          <div class="ticket">
+            <img class="ghost" src="/events/kowaimono-2026/assets/event-ghost.png" alt="" aria-hidden="true" width="240" height="219" loading="lazy" />
+            <span class="tag">イベント参加者限定</span>
+            <div class="offer">お好きなサンドイッチ１点<strong>２０％OFF</strong></div>
+            <p class="state" id="coupon-state" role="status" aria-live="polite">有効期間：<span class="nb">２０２６年１２月１１日</span>〜<span class="nb">１２月３０日</span></p>
+            <p class="today" id="coupon-today" hidden></p>
+            <dl class="terms">
+              <div><dt>有効期間</dt><dd><span class="nb">２０２６年１２月１１日</span>〜<span class="nb">１２月３０日</span></dd></div>
+              <div><dt>ご利用回数</dt><dd>期間中、お一人様１回限りです。</dd></div>
+              <div><dt>ご利用方法</dt><dd>お会計前に、このクーポン画面をスタッフへご提示ください。</dd></div>
+              <div><dt>ご利用条件</dt><dd>他の割引との併用はできません。会員登録は不要で、最低購入金額の条件もありません。</dd></div>
+              <div><dt>親子でご来店</dt><dd>親子でご来店の場合も、お一人様につき１点ご利用いただけます。</dd></div>
+            </dl>
+          </div>
+        </div>
+      </section>
+
+      <!-- おすすめ商品 -->
+      <section class="products">
+        <p class="eyebrow">SANDWICH</p>
+        <h2>毎日食べたくなる、<br />できたてサンドイッチ。</h2>
+        <p class="lead">{shop.description}クーポンはお好きなサンドイッチ１点にお使いいただけます。</p>
+        <div class="grid">
+          {sandwiches.map((i: any) => (
+            <article class="card">
+              <img src={i.image} alt={i.name} width="312" height="352" loading="lazy" />
+              <h3>{i.name}</h3>
+              <p class="price">{zen(i.price)}</p>
+              <p class="desc">{i.desc}</p>
+            </article>
+          ))}
+        </div>
+        <p class="note-small">商品・価格は変更になる場合があります。品切れの際はご容赦ください。</p>
+      </section>
+
+      <!-- アクセス -->
+      <section class="access">
+        <p class="eyebrow">ACCESS</p>
+        <h2>お店はこちら</h2>
+        <div class="acard">
+          <div>
+            <h3>{shop.name}</h3>
+            <p class="floor">ミッテン府中１階</p>
+            <dl>
+              <dt>住所</dt><dd>東京都府中市宮町１−４１−２</dd>
+              <dt>営業時間</dt><dd>{info('営業時間')}</dd>
+              <dt>アクセス</dt><dd>{info('アクセス')}</dd>
+            </dl>
+            <p class="small">{shop.notes[0]}</p>
+            <a class="btn" href={mapLink(shop.mapQuery)} target="_blank" rel="noopener">Googleマップを開く <span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="gallery-one"><img src="/uploads/shops/ckun-3.jpg" alt="ミッテン府中１階の店舗カウンター" loading="lazy" /></div>
+        </div>
+      </section>
+
+      <!-- メルマガ（控えめに）。登録しなくてもクーポンは使えることを明記 -->
+      <section class="mail">
+        <p>お得な情報をメールで受け取れます。</p>
+        <a href="https://1lejend.com/stepmail/kd.php?no=crUAEvq" target="_blank" rel="noopener">し～くんのサンドイッチレターに登録する ↗</a>
+        <small>登録しなくても、このクーポンをご利用いただけます。</small>
+      </section>
+      <p class="credit">し～くんのサンドイッチ屋さん（運営：クリスフードサービス合同会社）</p>
+    </div>
+
+    <script is:inline>
+      (function () {
+        // 利用期間の判定は日本時間(Asia/Tokyo)で行う
+        var START = '2026-12-11', END = '2026-12-30';
+        var zen = function (s) { return String(s).replace(/[0-9]/g, function (d) { return String.fromCharCode(d.charCodeAt(0) + 0xFEE0); }); };
+        var now = new Date();
+        var today = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Tokyo', year: 'numeric', month: '2-digit', day: '2-digit' }).format(now); // YYYY-MM-DD
+        var wd = new Intl.DateTimeFormat('ja-JP', { timeZone: 'Asia/Tokyo', weekday: 'short' }).format(now);
+        var p = today.split('-');
+        var box = document.getElementById('coupon');
+        var state = document.getElementById('coupon-state');
+        var label = document.getElementById('coupon-today');
+        if (!box || !state) return;
+        if (today < START) {
+          box.setAttribute('data-state', 'before');
+          if (label) label.hidden = true;
+          state.textContent = '１２月１１日から利用できます';
+        } else if (today > END) {
+          box.setAttribute('data-state', 'closed');
+          if (label) label.hidden = true;
+          state.textContent = 'このクーポンの有効期間は終了しました。店舗情報・地図は引き続きご覧いただけます。';
+        } else {
+          box.setAttribute('data-state', 'active');
+          state.textContent = 'ご利用いただけます。お会計前に、この画面をスタッフへご提示ください。';
+          if (label) { label.hidden = false; label.textContent = '本日の日付（日本時間）：' + zen(p[0]) + '年' + zen(+p[1]) + '月' + zen(+p[2]) + '日（' + wd.replace(/[（）()]/g, '') + '）'; }
+        }
+      })();
+    </script>
+  </body>
+</html>

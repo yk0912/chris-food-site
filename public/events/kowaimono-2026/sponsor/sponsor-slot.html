@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>スポンサー枠｜し～くんのサンドイッチ屋さん（編集用）</title>
+<!--
+  スポンサー枠 掲載画像（編集用 HTML/CSS）  2400 x 1011 px（約 2.374 : 1）
+  ・QR は coupon-qr.svg（URL: https://chrisbakery.jp/events/kowaimono-2026/、余白4モジュール込み）を、
+    1モジュール = 17px の整数倍で配置しています。QR の上に文字や装飾を重ねないでください。
+  ・PNG の書き出し: msedge --headless=new --hide-scrollbars --force-device-scale-factor=1
+      --window-size=2400,1011 --screenshot=sponsor-slot.png sponsor-slot.html
+-->
+<style>
+  :root{--ink:#263a35;--gold:#c9a95a;--red:#b8453d;--cream:#fffdf7;--dark:#151a22}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{width:2400px;height:1011px;overflow:hidden;background:var(--cream)}
+  body{position:relative;font-family:"BIZ UDPGothic","Yu Gothic UI","Yu Gothic","Meiryo",sans-serif;color:var(--ink)}
+
+  /* 細い金色の枠 */
+  .frame{position:absolute;left:30px;top:78px;right:30px;bottom:30px;border:7px solid var(--gold);border-radius:64px}
+  .frame::before{content:"";position:absolute;inset:14px;border:2px solid #ecdfc0;border-radius:50px}
+
+  /* 赤い SPONSOR 札 */
+  .tab{position:absolute;left:1115px;top:22px;width:650px;height:156px;background:var(--red);border-radius:30px;
+       transform:rotate(-1.6deg);display:flex;align-items:center;justify-content:center;
+       box-shadow:0 8px 0 #00000014;color:#fff;font:900 112px/1 "Arial Black","Arial",sans-serif;letter-spacing:.04em}
+
+  /* 左: QR（黒白・余白4モジュール込みの白地ごと配置） */
+  .qr{position:absolute;left:150px;top:224px;width:697px;height:697px;background:#fff;border:2px solid #eadfc8;border-radius:20px;overflow:hidden}
+  .qr img{display:block;width:697px;height:697px;image-rendering:pixelated}
+
+  /* 右: 店名・場所・特典・ボタン */
+  .info{position:absolute;left:965px;top:218px;width:1285px;height:703px;display:flex;flex-direction:column;justify-content:space-between}
+  .name{-webkit-text-stroke:2.5px currentColor;font-weight:700;font-size:92px;line-height:1.15;white-space:nowrap;letter-spacing:.01em}
+  .place-row{display:flex;align-items:center;gap:34px}
+  .place{-webkit-text-stroke:1.5px currentColor;font-weight:700;font-size:58px;color:#5b5f55;white-space:nowrap}
+  .badge{-webkit-text-stroke:1.2px currentColor;font-weight:700;font-size:46px;color:#7a5a24;background:#f3e8d3;border-radius:999px;padding:8px 36px;white-space:nowrap}
+  .offer-lead{-webkit-text-stroke:2.5px currentColor;font-weight:700;font-size:72px;line-height:1.1;white-space:nowrap}
+  .offer-big{-webkit-text-stroke:5px currentColor;font-weight:700;font-size:190px;line-height:.95;color:var(--red);letter-spacing:-.015em;white-space:nowrap}
+  .offer-big small{font-size:.62em;letter-spacing:.02em}
+  .cta{height:116px;background:var(--dark);border-radius:24px;display:flex;align-items:center;justify-content:center;gap:34px;color:#fff;-webkit-text-stroke:2.5px currentColor;font-weight:700;font-size:78px;line-height:1}
+  .cta i{display:block;width:0;height:0;border-style:solid;border-width:30px 0 30px 52px;border-color:transparent transparent transparent #f3c94a}
+</style>
+</head>
+<body>
+  <div class="frame"></div>
+  <div class="tab">SPONSOR</div>
+
+  <div class="qr"><img src="coupon-qr.svg" alt="クーポンページのQRコード（https://chrisbakery.jp/events/kowaimono-2026/）"></div>
+
+  <div class="info">
+    <div class="name">し～くんのサンドイッチ屋さん</div>
+    <div class="place-row"><span class="place">ミッテン府中１階</span><span class="badge">イベント参加者限定</span></div>
+    <div>
+      <div class="offer-lead">お好きなサンドイッチ１点</div>
+      <div class="offer-big">２０<small>％</small>OFF</div>
+    </div>
+    <div class="cta"><i></i>クーポンはこちら</div>
+  </div>
+</body>
+</html>

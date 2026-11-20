@@ -1,0 +1,5 @@
+# クーポンLP(怖いものみたさ)は検索エンジンに載せない（HTMLの meta robots と二重に指定）
+/events/kowaimono-2026/
+  X-Robots-Tag: noindex, nofollow
+/events/kowaimono-2026/*
+  X-Robots-Tag: noindex, nofollow
